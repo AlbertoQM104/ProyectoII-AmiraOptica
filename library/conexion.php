@@ -5,7 +5,7 @@
     Class Conexion{
 
         /* En caso que no se pueda importar la carpeta "config" */
-        // Lista de configuración de la BD
+        
         private $server = "localhost";
         private $user = "root";
         private $password = "";
