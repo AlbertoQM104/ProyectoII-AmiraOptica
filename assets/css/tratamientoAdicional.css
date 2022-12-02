@@ -1,0 +1,158 @@
+.contenedorTotalTratamientoAdicional{
+    display: flex;   
+    justify-content: center;
+    align-items: center; 
+
+    background-color: white;
+}
+
+.contenedorTotalTratamientoAdicional .totalTrataAdicion{
+    display: flex;    
+    flex-direction: column;
+
+    border: solid 2px #696969;
+    border-radius: 10px;
+
+    margin: 50px;
+
+    padding: 30px 50px;
+    
+
+    width: 85%;
+}
+
+.contenedorTotalTratamientoAdicional .totalTrataAdicion .tituloGen{
+    justify-content: flex-start;
+}
+
+.contenedorTotalTratamientoAdicional .totalTrataAdicion .tituloGen h1{
+    font-size: 24px;
+    color: #696969;
+}
+
+.contenedorTotalTratamientoAdicional .totalTrataAdicion .sinTrata{
+    display: flex;
+
+    justify-content: space-between;
+
+    border: solid 1px #696969;
+    border-radius: 12px;
+
+    padding: 10px 20px;
+
+    margin: 20px 0px;
+
+    background-color: #F9F9F9;
+}
+
+.contenedorTotalTratamientoAdicional .totalTrataAdicion .sinTrata .sinTrata1{
+    display: flex;
+}
+
+.contenedorTotalTratamientoAdicional .totalTrataAdicion .sinTrata .sinTrata1 h3{
+    padding-left: 10px;
+    font-size: 14px;
+    color: #696969;
+}
+
+/* Segmento de lunas antireflex */
+
+.totalTrataAdicion .lunasAnti{
+    display: flex;
+
+    flex-direction: column;
+    
+    border-radius: 12px;
+    padding: 10px 20px;
+    margin-bottom: 20px;
+
+    border: solid 1px #696969;
+
+    background-color: #F9F9F9;
+}
+
+.totalTrataAdicion .lunasAnti .anti{
+    display: flex;
+
+    justify-content: space-between;    
+}
+
+.totalTrataAdicion .lunasAnti .lunasAnti1{
+     display: flex;
+}
+
+
+.totalTrataAdicion .lunasAnti .lunasAnti1 h3{
+    padding-left: 10px;
+    font-size: 14px;
+    color: #696969;
+}
+
+
+.totalTrataAdicion .lunasAnti .lunasAntiCarac{
+    display: flex;
+    padding: 10px 35px;    
+}
+
+.totalTrataAdicion .lunasAnti .lunasAntiCarac ul li{
+    padding: 5px 0px;    
+    font-size: 12px;    
+}
+
+/* Zona de lunas fotocromáticas */
+
+.totalTrataAdicion .lunasFoto{
+    display: flex;
+
+    flex-direction: column;
+    
+    border-radius: 12px;
+    padding: 10px 20px;
+    margin-bottom: 20px;
+
+    border: solid 1px #696969;
+
+    background-color: #F9F9F9;
+}
+
+.totalTrataAdicion .lunasFoto .lunfotoo{
+    display: flex;
+
+    justify-content: space-between; 
+}
+
+.totalTrataAdicion .lunasFoto .lunfotoo .lunasFoto1{
+    display: flex;
+
+}
+
+.totalTrataAdicion .lunasFoto .lunfotoo .lunasFoto1 h3{
+    padding-left: 10px;
+    font-size: 14px;
+    color: #696969;
+}
+
+.totalTrataAdicion .lunasFoto .lunasFotoCaracte{
+    text-align: left;
+    padding: 20px 0px;
+    font-size: 14px;
+    width: 20%;
+}
+
+/* Zona de botón final */
+.contenedorTotalTratamientoAdicional .totalTrataAdicion .btnTrataA{
+    display: flex;    
+    justify-content: flex-end;
+}
+
+.contenedorTotalTratamientoAdicional .totalTrataAdicion .btnTrataA .btnTrataAOfi{ 
+    background-color: #FF7143;
+    color: white;
+
+    font-size: 18px;    
+
+    padding: 5px 40px;
+    margin: 15px 0px;
+
+    cursor: pointer;
+}

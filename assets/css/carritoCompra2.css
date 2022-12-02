@@ -1,0 +1,242 @@
+.carritoEntregaTotal{
+    display: flex;    
+    background-color: white;
+
+    padding: 70px;
+}
+
+.EntregIzquierda{
+    width: 70%;
+
+    padding: 0px 190px;
+}
+
+.entregIzEnca{
+    display: flex; 
+    border-bottom: solid 1px #cacaca;   
+    color: #696969;
+}
+
+.entregIzEnca h1{
+    font-size: 36px; 
+}
+
+/* Detalles campos */
+.entregIzCampos{
+    display: flex;
+    flex-direction: column; 
+    
+    border-bottom: solid 1px #cacaca;
+
+    padding: 20px 0px;
+}
+
+.entregIzCampos input{
+    margin: 10px 0px;
+}
+
+.entregIzCamposPrim{
+    display: flex;
+    justify-content: space-between;
+}
+
+.entregIzCamposPrim input{
+    border: solid 2px #696969;
+
+    padding: 5px;
+
+    width: 48%;
+}
+
+.entregIzCampos input{
+    border: solid 2px #696969;
+
+    padding: 5px;
+    
+}
+
+.entregIzCamposTerc{
+    display: flex;
+    justify-content: space-between;
+}
+
+.entregIzCamposTerc input{
+    border: solid 2px #696969;
+
+    padding: 5px;
+
+    width: 48%;
+}
+
+.entregIzCamposCuart{
+    display: flex;
+    justify-content: space-between;
+}
+
+.entregIzCamposCuart input{
+    border: solid 2px #696969;
+
+    padding: 5px;
+
+    width: 48%;
+}
+
+/* Tipo de recojo */
+.entregIzTipoRec{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    
+
+    color: #696969;
+    padding: 15px 0px;
+    border-bottom: solid 1px #cacaca;
+}
+
+.entregIzTipoRecTienda{
+    display: flex;
+
+    padding: 10px 30px;
+
+    background-color: #EBEBEB;
+
+    border: solid 1px #aaaaaa;
+    border-radius: 5px;
+}
+
+.entregIzTipoRecDelivery{
+    display: flex;
+
+    border: solid 1px #aaaaaa;
+    padding: 10px 30px;
+    border-radius: 5px;
+}
+
+.entregIzTipoRec input{
+        margin-right: 25px;
+}
+
+.entregIzTipoRecTiendaSub{
+    display: flex;
+    flex-direction: column;
+}
+
+.entregIzTipoRecTiendaSub .lbl1{
+    font-size: 18px;
+}
+
+.entregIzTipoRecTiendaSub .lbl2{
+    font-size: 14px;
+}
+
+.entregIzTipoRecDeliverySub{
+    display: flex;
+    flex-direction: column;
+}
+
+.entregIzTipoRecDeliverySub .lbl1{
+    font-size: 18px;
+}
+
+.entregIzTipoRecDeliverySub .lbl2{
+    font-size: 14px;
+}
+
+/* Parte final izquierda boton */
+.entregIzBot{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding-top: 30px;
+}
+
+.entregIzBot button{
+    background-color: #606060;
+    color: white;
+
+    padding: 5px 50px;
+    cursor: pointer;
+}
+
+
+/* Parte DERECHA - DIV */
+
+.EntregDerecha{
+
+    padding-right: 160px;
+
+    width: 30%;
+}
+
+.EntregDerecha .entregDerEnca{
+    display: flex;
+    color: #696969;
+    font-size: 18px;
+    border-bottom: solid 1px #65656565;
+}
+
+/* Parte de los productos en RESUMEN */
+
+.entregDerProds{
+    display: flex;
+    flex-direction: column;
+    
+    color: #696969;
+    
+    border-bottom: solid 1px #65656565;
+    padding-bottom: 10px;
+}
+
+.entregDerProdUni{
+    display: flex;
+    
+    padding-top: 10px;
+}
+
+.datosProdResu{
+    display: flex;
+    flex-direction: column;
+    
+    justify-content: space-evenly;
+    padding: 0px 20px;
+}
+
+.datosProdResu h3{
+    font-size: 16px;
+}
+
+.datosProdResu p{
+    font-size: 16px;
+}
+
+.entregDerProds .entregDerProdUni .imagenDerPr img{
+    width: 100px;
+    border: solid 1px #606060;
+    padding: 5px;
+}
+
+
+
+.entregDerPrec{
+    display: flex;
+    flex-direction: column;
+    color: #696969;
+    font-size: 12px;
+    border-bottom: solid 1px #65656565;
+
+    padding: 20px 0px;
+}
+
+.entregDerPrec .carritoTerc{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 5px 0px;
+}
+
+.entregDerPrec h3{
+    font-size: 18px;
+}
+

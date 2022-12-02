@@ -1,0 +1,88 @@
+ /* Poner el margen y el padding en 0, en lugar del automático de HTML */
+ *{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Open Sans';	
+}
+
+.iniciar-sesion{
+    margin-top: 5%;    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.iniciar-sesion .formulario1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    padding: 30px 0px;
+    
+    width: 800px;
+}
+
+.iniciar-sesion .formulario1 input{
+    border: solid;
+    border-color: #606060;
+    border-radius: 5px;
+    padding: 20px 5px;
+    margin: 20px 0px;
+    width: 300px;
+}
+
+.iniciar-sesion .formulario1 .btnLog{
+    background-color: #EB5F31;
+    color: white;
+    padding: 5px 40px;
+    border-radius: 5px;
+    font-size: 22px;
+    margin-top: 25px;
+    cursor: pointer;
+}
+
+.iniciar-sesion h2{
+    font-size: 24px;
+    color: #606060;
+}
+
+/* Debajo del login */
+.nuevoo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 5%;
+}
+
+.nuevoo h3{
+    font-size: 20px;
+}
+
+@media screen and (max-width: 800px) {
+    .iniciar-sesion .formulario1{                
+        width: 300px;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .iniciar-sesion{ 
+        margin-top: 15px;    
+        margin: 0 auto;
+        width: 300px;
+    }
+
+    .iniciar-sesion .formulario1{                
+        width: 290px;
+    }
+
+    .nuevoo{        
+        margin-bottom: 15px;
+    }
+
+    .iniciar-sesion .formulario1 input{        
+        width: 190px;
+    }
+}

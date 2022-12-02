@@ -1,0 +1,79 @@
+ /* Poner el margen y el padding en 0, en lugar del automático de HTML */
+ *{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Open Sans';	
+}
+
+.regis{
+    background-color: #F9F8F8;
+    width: 80%;    
+    margin: auto;
+    margin-top: 60px;
+    margin-bottom: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 50px 0px;
+}
+
+.regis h2{
+    font-size: 24px;
+    padding-bottom: 30px;
+    color: #606060;
+}
+
+.formregis{
+    display: flex;
+    flex-direction: column;
+}
+
+.formregis .datos{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;    
+}
+
+.formregis input{
+    padding: 10px 5px;
+    border: solid 1px;
+    border-color: #606060;
+    border-radius: 5px;
+    margin: 15px 0px;    
+    justify-content: flex-start;    
+    width: 300px;
+}
+
+.formregis label{    
+    font-size: 14px;
+    padding-right: 30px;        
+}
+
+.formregis .btnRegis{
+    background-color: #EB5F31;
+    color: white;
+    padding: 5px 40px;
+    border-radius: 5px;
+    font-size: 22px;    
+    cursor: pointer;
+}
+
+.autori{
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    padding: 50px 0px;
+}
+
+@media screen and (max-width: 450px) {
+    .formregis input{         
+        width: 180px;
+    }
+
+    .formregis .btnRegis{        
+        padding: 5px 15px;        
+        font-size: 20px;           
+    }
+}

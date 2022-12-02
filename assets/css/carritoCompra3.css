@@ -1,0 +1,140 @@
+.carritoPagoTotal{
+    display: flex;
+
+    background-color: white;
+
+    padding: 70px;
+}
+
+
+/* Parte izquierda */
+.carritoPagoIzquierda{
+    width: 70%;
+
+    padding: 0px 190px;
+}
+
+.pagoTarjetaCredito{
+    display: flex;
+    flex-direction: column;
+
+    border: solid 1px #cacaca;
+    border-radius: 10px;
+
+    margin-top: 20px;
+    margin-bottom: 10px;
+
+    padding: 10px 20px;
+}
+
+.creditoEncab{
+    display: flex;
+
+    padding-bottom: 20px;
+}
+
+.creditoEncab input{
+    margin-right: 10px;
+}
+
+.creditoEncabDeta label{
+    font-size: 16px;
+}
+
+.creditoEncabDeta p{
+    font-size: 14px;
+}
+
+.creditoIntermed1{
+    display: flex;
+    justify-content: space-between;
+}
+
+.creditoIntermed1 input{
+    border: solid 1px #cacaca;
+    
+    padding: 10px;
+}
+
+.creditoIntermedFinal{
+    display: flex;
+    justify-content: flex-start;
+}
+
+.creditoIntermedFinal input{
+    font-size: 16px;
+
+    border: solid 1px #cacaca;
+    width: 89.5%;
+
+    padding: 10px;
+    margin-top: 10px;
+}
+
+.pagoTarjetaDebito{
+    display: flex;
+    flex-direction: column;
+
+    border: solid 1px #cacaca;
+    border-radius: 10px;
+
+    padding: 10px 20px;    
+}
+
+.debitoEncab{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    padding-bottom: 20px;
+}
+
+.debitoEncab input{
+    margin-right: 10px;
+}
+
+.debitoEncab label{
+    font-size: 16px;
+    margin-right: 10px;
+}
+
+.debitoIntermedio{
+    display: flex;
+    justify-content: space-between;
+
+    
+
+}
+
+.debitoIntermedio input{
+    border: solid 1px #cacaca;
+    padding: 10px;
+    
+}
+
+.debitoFinal input{
+    border: solid 1px #cacaca;
+    width: 89.5%;
+
+    padding: 10px;
+    margin-top: 10px;
+}
+
+.btnPagarN{
+    display: flex;
+    justify-content: center;
+
+    border-top: solid 1px #868686;
+    padding-top: 10px;
+    margin-top: 10px;
+}
+
+.btnPagarN a{
+    color: white;
+    background-color: #606060;
+    
+    font-size: 16px;
+
+    padding: 5px 50px;
+    cursor: pointer;
+}

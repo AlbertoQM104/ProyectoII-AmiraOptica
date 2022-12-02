@@ -1,0 +1,173 @@
+ /* Poner el margen y el padding en 0, en lugar del automático de HTML */
+ *{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Open Sans';	
+}
+
+.contenedorProductosTotal{
+    background-color: white;
+    display: flex;      
+    width: 100%;    
+}
+
+.contenedorFiltros{    
+    display: flex;    
+    flex-direction: column;
+    flex: 1;
+
+    /* border: solid;
+    border-color: #E5E5E5; */
+
+    margin: 35px 20px;
+    
+    /* border-radius: 10px; */
+}
+
+.contenedorFiltrosInterno{
+    border: solid;
+    border-color: #E5E5E5;
+    border-radius: 10px;
+}
+
+.superiorDatos1{
+    background-color: #626262;
+    color: white;
+    padding: 5px 10px;   
+    font-size: 14px; 
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.superiorDatos2{
+    color: #626262;
+    font-size: 14px;
+    padding: 5px 10px;
+    padding-bottom: 10px;
+}
+
+.filtroGenero{
+    display: flex;
+    flex-direction: column;
+    padding: 5px 10px;
+}
+
+.filtroGenero h3{
+    padding-bottom: 5px;
+}
+
+.filtroGenero label{
+    padding: 5px 0px;
+    display: flex;
+    align-items: center;    
+}
+
+.filtroGenero input{
+    margin-right: 5px; 
+}
+
+.filtroColor{
+    display: flex;
+    flex-direction: column;
+    padding: 20px 10px;
+    padding-bottom: 55px;
+}
+
+.filtroColor h3{
+    padding-bottom: 5px;
+}
+
+.filtroColor label{
+    padding: 5px 0px;
+    display: flex;
+    align-items: center; 
+}
+
+.filtroColor input{
+    margin-right: 5px;
+}
+
+/* Apartado de productos */
+
+.contenedorProductos{
+    display: flex;
+    /* border: solid; */
+    flex: 9;
+    margin: 35px 20px;
+    flex-direction: column;
+}
+
+.contenedorSuperior{
+    display: flex;
+    border: solid 1.5px;
+    justify-content: flex-start;
+    align-items: flex-start;
+    border-radius: 5px;
+    border-color: #DFDFDF;
+    padding: 5px 5px;
+
+    font-size: 12px;
+    color: #7c7c7c;
+}
+
+.totalProductos{
+    display: flex;
+    margin: 35px 0px;
+
+    
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+}
+
+.cuerpoCarta{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 80px;
+    flex-direction: column;  
+    flex: none;
+
+    margin-right: 73px;
+    /* flex-flow: column wrap; */
+}
+
+.imagenCarta img{
+    width: 200px;
+}
+
+.datosCarta h4{
+    color: #626262;
+    padding-bottom: 5px;
+    font-size: 12px;
+}
+
+.datosCarta h5{
+    color: #424242;
+    font-weight: bold;
+
+    font-size: 11px;
+}
+
+.datosCarta p{
+    color: #424242;
+    font-weight: bold;   
+    
+    font-size: 11px;
+}
+
+.botonCarta{
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+    padding-top: 10px;
+}
+
+.botonCartaO{
+    color: white;
+    background-color: #626262;
+    border-radius: 20px;
+    padding: 5px 25px;    
+
+    cursor: pointer;
+}

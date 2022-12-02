@@ -1,0 +1,160 @@
+.tituloMisCompras{
+    display: flex;
+    justify-content: flex-start;
+    background-color: white;
+    color: gray;
+
+    margin-bottom: 10px;
+    padding-top: 40px;
+    padding-bottom: 15px;
+    padding-left: 50px;
+}
+
+.conteCompraOnline{
+    display: flex;
+    flex-direction: column;
+
+    background-color: white;
+    padding: 5px 50px;
+    padding-bottom: 60px;
+}
+
+/* Buscador */
+
+.conteCompraOnline .buscarOnli{
+    display: flex;
+    align-items: center;
+
+    margin-top: 20px;
+}
+
+.conteCompraOnline .buscarOnli label{
+    position: absolute;
+
+    font-size: 14px;    
+    padding-top: 12px;
+    padding-left: 5px;    
+}
+
+.conteCompraOnline .buscarOnli input{
+    border: solid 1px #cacaca;
+
+    padding: 9px 25px;
+    border-radius: 20px;    
+}
+
+/* Productos */
+.compOnliProd{
+    display: flex;
+    flex-direction: column;
+    border: solid 1px #cacaca;
+    border-radius: 10px;
+
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.compOnliEncab{
+    display: flex;
+    justify-content: space-between;
+
+    border-bottom: solid 1px #cacaca;
+
+    padding: 5px 10px;
+    color: #606060;
+}
+
+.compOnliEncab h2{
+    font-size: 22px;
+}
+
+.compOnliEncabFec label{
+    font-size: 16px;
+    padding-right: 10px;
+}
+
+.compOnliEncabFec input{
+    border: solid 1px #cacaca;
+    border-radius: 5px;
+    padding: 5px 2px;
+}
+
+/* Número de compra */
+.compOnliNroCompr{
+    display: flex;
+    justify-content: space-between;
+
+    padding-top: 10px;
+    padding-left: 30px;
+    margin-right: 35%;
+}
+
+.compOnliNroCompr h3{
+    font-size: 18px;
+    color: #696969;
+}
+
+/* Fecha de llegada */
+.compOnliLlega{
+    display: flex;
+    justify-content: space-between;
+
+    padding-top: 10px;
+    padding-left: 30px;
+    margin-right: 25.8%;
+}
+
+.compOnliLlega h3{
+    font-size: 18px;
+    color: #696969;
+}
+
+/* Productos detalles */
+.compOnliFilaProd{
+    display: flex;
+    
+    justify-content: space-between;
+
+    padding-top: 40px;
+    padding-bottom: 15px;
+    padding-left: 30px;
+    padding-right: 40px;
+}
+
+.compOnliProdUni{
+    display: flex;        
+}
+
+.compOnliDetails{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+    font-size: 14px;
+    color: #606060;
+
+    padding-left: 35px;
+}
+
+.compOnliImag img{
+    width: 160px;
+}
+
+.btnVerDetall{
+    display: flex;
+    align-items: center;
+}
+
+.btnVerDetall a{
+    border: solid 1px #575757;
+    background-color: #AAAAAA;
+    border-radius: 40px;
+    color: white;
+
+    font-size: 22px;
+
+    padding: 10px 70px;
+
+    cursor: pointer;
+}
+

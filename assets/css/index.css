@@ -1,0 +1,410 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@700&display=swap');
+
+
+ /* Poner el margen y el padding en 0, en lugar del automático de HTML */
+ *{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Source Sans Pro', sans-serif;
+}
+
+body{
+	background-color: #F9F8F8;		
+}
+
+.image2 img{
+	width: 100%;
+	height: auto;
+}
+
+.logo-encabezado{
+	display: flex;
+	justify-content: flex-start;
+}
+
+.container-total{
+	background-color: white;
+	display: flex;	
+	align-items: center;
+	justify-content: space-around;		
+}
+
+.container-total .image{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.container-total .content{	
+	align-items: center;
+	justify-content: center;
+
+	margin-left: 50px;
+}
+
+.container-total .content span{
+	font-size: 6rem;
+    color:#666;
+}
+
+.container-total .content h3{
+	font-size:9rem;		
+	
+    color: rgb(95, 95, 95);
+}
+
+.btn-deliverygratis{
+	background-color: rgb(70, 70, 70);
+	color: white;
+	padding: 1.5rem 3rem;
+	border-radius: 5px;
+	font-size: 18px;
+}
+
+.btn-prods{
+	color: #666;
+	font-size: 16px;
+}
+
+/* Segunda parte del container */
+.container-total2{
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	align-items: center;
+	color: #666;
+	margin-top: 10px;		
+	background-color: white;
+	padding: 50px 0px;
+}
+
+.container-total2 h2{
+	font-size: 24px;
+}
+
+/* Imagenes */
+.imagenesref{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;	
+
+	
+
+	flex-wrap: wrap;
+}
+
+.container-total2 .imagenesref img{
+	width: 250px;
+	padding: 0 30px;	
+	margin: 25px 0px; 
+	/* clip-path: inset(70px 0px); */
+	position: relative;
+}
+
+.container-total2 h3{
+	font-size: 18px;
+}
+
+/* Mostrar según sexo */
+.container-total3{
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	margin-top: 20px;
+}
+
+.container-total3 h2{
+	font-size: 24px;
+	color: #666;
+}
+
+.container-total3 p{
+	width: 500px;
+	text-align: justify;
+	font-size: 14px;
+}
+
+.container-total3 .mostrar-hombres{
+	display: flex;
+	justify-content: center;
+	align-items: center;	
+	flex-direction: column;
+}
+
+.container-total3 .mostrar-mujeres{
+	display: flex;
+	justify-content: center;
+	align-items: center;	
+	flex-direction: column;
+}
+
+.container-total3 img{
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	width: 500px;
+	border-radius: 30px;
+}
+
+/* Modelos de niños */
+.container-total4{
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	flex-direction: column;
+	margin-top: 40px;
+}
+
+.total4Ninos{
+	display: flex;
+	justify-content: space-evenly;	
+}
+
+.container-total4 h2{
+	font-size: 26px;
+	color: #666;
+}
+
+.container-total4 p{
+	width: 600px;
+	font-size: 20px;
+	text-align: justify;
+	padding-right: 50px;
+}
+
+.container-total4 img{
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+	margin-left: 65px;
+	border-radius: 30px;
+	width: 800px;
+}
+
+.total4NinosTexto{
+	display: flex;
+	flex-direction: column;	
+	align-items: center;
+}
+
+/* Servicios */
+.container-total5{
+	background-color: white;
+	margin-top: 30px;
+	padding: 50px 0px;
+}
+
+.servicios1{
+	display: flex;
+	justify-content: space-around;
+	align-items: center;	
+	padding-top: 30px;
+}
+
+.servicios1 i{
+	background-color: #EBEBEB;
+	color: #606060;
+	padding: 10px;
+	border-radius: 5px;
+	font-size: 24px;
+}
+
+.servicios2{
+	display: flex;
+	justify-content: space-around;
+	align-items: center;	
+	padding-top: 30px;
+}
+
+.servicios2 i{
+	background-color: #EBEBEB;
+	color: #606060;
+	padding: 10px;
+	border-radius: 5px;
+	font-size: 24px;
+}
+
+.serviciowo{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 350px;
+	text-align: center;
+}
+
+.serviciowo h3{
+	font-size: 22px;
+	padding-bottom: 15px;
+}
+
+.serviciowo p{
+	font-size: 14px;
+}
+
+@media screen and (max-width:1500px) {
+	/* Segunda parte del container */
+	.container-total2{
+		padding: 50px 0px;
+	}
+
+	.container-total2 h2{
+		font-size: 24px;
+	}
+
+	/* Imagenes */
+	.imagenesref{
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.imagenesref img{
+		width: 150px;
+		padding: 0 10px;
+		
+		/* clip-path: inset(70px 0px); */
+		position: relative;
+	}
+
+	.container-total2 h3{
+		font-size: 18px;
+	}
+}
+
+@media screen and (max-width: 1010px) {
+	.container-total3{
+		flex-direction: column;
+	}
+
+	.container-total3 .mostrar-mujeres{
+		padding-top: 30px;
+	}
+}
+
+@media screen and (max-width: 900px) {
+	.container-total2 .imagenesref{
+		flex-wrap: wrap;	
+		flex-flow: column wrap;	
+	}
+
+	.container-total2 .imagenesref img{
+		padding: 20px 0px;
+		width: 400px;		
+	}
+}
+
+@media screen and (max-width: 850px) {
+	.spaner1{
+		font-size: 80px;
+	}
+
+	.container-total .content span{
+		font-size: 3rem;
+		color:#666;
+	}
+	
+	.container-total .content h3{
+		font-size: 2rem;
+		color:var(--black);
+	}
+
+	.container-total4 img{
+		width: 450px;
+	}
+
+	.btn-deliverygratis{
+		display: none;
+	}
+}
+
+@media screen and (max-width: 600px) {
+	.container-total4 p{
+		width: 250px;
+	}
+}
+
+@media screen and (max-width: 560px) {
+    .servicios1{
+        flex-direction: column;
+    }
+    .servicios2{
+        flex-direction: column;
+    }
+
+    .serviciowo{
+        padding: 40px 0px;
+    }
+
+	.serviciowo h3{
+        font-size: 24px;
+    }
+
+	.serviciowo p{
+        font-size: 22px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .container-total2 .imagenesref img{
+		width: 250px;
+	}
+
+	.container-total2 h2{
+		font-size: 14px;
+	}
+
+	.container-total2 h3{
+		font-size: 12px;
+	}
+
+	.mostrar-hombres img{
+		width: 250px;
+	}
+
+	.mostrar-hombres p{
+		width: 200px;
+	}
+
+	.mostrar-mujeres img{
+		width: 250px;
+	}
+
+	.mostrar-mujeres p{
+		width: 200px;
+	}
+
+	.container-total4 img{
+		width: 250px;
+	}
+}
+
+@media screen and (max-width: 450px) {
+    .container-total{
+		flex-direction: column;		
+		width: 100%;
+	}
+
+	.container-total .content{		
+		align-items: center;
+		justify-content: center;
+		text-align: center;		
+	}
+
+	.container-total img{
+		width: 300px;
+	}
+
+	.container-total .content span{
+		font-size: 14px;
+	}
+
+	.container-total .content h3{
+		font-size: 12px;
+	}
+
+	.btn-prods{
+		font-size: 10px;
+	}
+}

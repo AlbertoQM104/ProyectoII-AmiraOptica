@@ -1,0 +1,129 @@
+.carritoTotal{
+    display: flex;    
+    
+
+    padding: 70px 30px;
+
+    background-color: white;
+    font-size: 18px;
+}
+
+.carritoTotal .carritoIzquierda{
+      width: 100%;
+
+      padding: 0px 40px;
+      
+}
+
+
+/* Botones finales */
+.carritoIzquierdaFinal{
+    display: flex;
+    justify-content: space-around;
+
+    padding-top: 40px;
+}
+
+.carritoIzquierdaFinal button{
+    padding: 10px 70px;
+
+    cursor: pointer;
+
+    font-size: 16px;
+}
+
+.carritoIzquierdaFinal .carritoSig{
+    background-color: #606060;
+    color: white;
+}
+
+.carritoIzquierdaFinal .carritoCancel{
+    color: #696969;
+}
+
+/* Parte derecha del Resumen */
+
+/* .carritoTotal .carritoDerecha{
+    display: flex;
+    flex-direction: column;
+
+    width: 30%;
+} */
+
+.carritoDerechaPrimer h1{
+    color: #696969;
+    font-size: 36px;
+    border-bottom: solid 1px #65656565;
+}
+
+.carritoDerechaSegun h2{
+    padding-top: 20px;
+    color: #696969;
+    font-size: 20px;
+    border-bottom: solid 1px #65656565;
+}
+
+.carritoDerechaTerc{
+    display: flex;
+    flex-direction: column;
+    color: #696969;
+    font-size: 12px;
+    border-bottom: solid 1px #65656565;
+
+    padding: 20px 0px;
+}
+
+
+
+.carritoDerechaTerc .carritoTerc{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 5px 0px;
+}
+
+.carritoDerechaTerc .carritoTerc h3{
+    font-size: 18px;
+}
+
+.carritoDerechaCuart{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 20px 0px;
+}
+
+.carritoDerechaCuart h2{
+    font-size: 18px;
+    color: #696969;
+}
+
+.carritoDerechaCuart p{
+    font-size: 18px;
+    color: #696969;
+}
+
+/* OPCIONES DE CARRITO */
+.carritoOpcionesO{
+    display: flex;
+    background-color: white;
+    justify-content: space-around;
+    align-items: center;
+
+    padding-top: 70px;
+    
+}
+
+.carritoOpcionesO .carritoOpcion button{
+    background-color: white;
+    font-size: 24px;
+    color: #606060;
+
+    cursor: pointer;
+    padding: 0px 80px;
+
+    border-bottom: solid 2px #606060;
+    
+}

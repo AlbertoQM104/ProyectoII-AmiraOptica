@@ -1,0 +1,133 @@
+.logo-encabezado{
+    margin-left: 20px;
+}
+
+.navbar{
+    display: flex;
+    justify-content: center;
+}
+
+.header-2 .iconos11 .carritSpan{
+    margin-left: -45px;
+    margin-bottom: -5px;
+
+    /* background-color: rgb(212, 212, 212); */
+    padding: 2px 8px;
+
+    border-radius: 50%;
+
+    color: rgb(230, 230, 230);
+    font-size: 16px;
+    
+}
+
+.header-2 .iconos11 .carrito1{    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    font-size: 16px;
+
+    border: solid;
+    border-color: rgb(95, 95, 95);
+    background-color: rgb(95, 95, 95); 
+    color: white;
+    height: 45px;
+
+    margin: 0px 15px;
+
+    float: left;
+}
+
+/* .header-2.iconos11 a{    
+    
+} */
+
+.navbar a{
+    color:var(--black);    
+    padding: .5rem 3.5rem;
+    font-size: 2.2rem;
+    border-radius: 2rem; 
+}
+
+.search-box-container{
+    border: solid;
+    border-color: #666;
+    width: 420px;     
+    height: 45px; 
+
+    margin-right: 120px;
+}
+
+.search-box-container input{    
+    margin-top: 5px;
+    margin-left: 5px;
+    font-size: 15px;
+    width: 355px;          
+}
+
+.search-box-container label{
+    padding: 5px 10px;
+
+
+
+    font-size: 15px;
+}
+
+.search-box-container label:hover{
+    background-color: #666;
+}
+
+.search-box-container label:hover{    
+    cursor: pointer;
+}
+
+
+.header-1 .header-2 .navbar{
+    margin-left: -100px;
+}
+
+.cuadro-login{
+    display: flex;
+    align-items: center;
+    border: solid;       
+    height: 45px;
+    margin: auto;
+}
+
+@media screen and (max-width:1500px) {
+
+    .search-box-container{        
+        width: 200px;      
+    }
+
+	.search-box-container input{    
+        width: 140px;      
+    }
+    
+    .search-box-container label{
+        padding: 5px 15px;
+    }
+}
+
+@media screen and (max-width:1200px) {
+
+    .search-box-container{        
+        width: 250px;      
+    }
+
+	.search-box-container input{    
+        width: 200px;      
+    }
+    
+    .search-box-container label{
+        padding: 5px 10px;
+    }
+}
+
+@media screen and (max-width:1100px) {
+    .search-box-container{        
+        display: none;     
+    }
+}
+

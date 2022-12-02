@@ -1,0 +1,225 @@
+.contenedorTotalTipoLuna{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: white;
+}
+
+.totalTipoLuna{
+    display: flex;
+    flex-direction: column;
+
+    border: solid 2px #c4c4c4;
+    border-radius: 10px;
+
+    margin: 80px 0px;
+    padding: 50px 50px;
+
+    width: 80%;
+}
+
+.totalTipoLuna .titulo h1{
+    display: flex;
+    justify-content: flex-start;    
+    color: #696969;
+
+    padding-bottom: 40px;
+}
+
+.totalTipoLuna .tipoLunaBotones{
+    display: flex;
+    justify-content: space-around;
+
+    padding-bottom: 40px;
+}
+
+.totalTipoLuna .tipoLunaBotones .tipoLunabtn{
+    font-size: 16px;
+
+    border: solid 1px #696969;
+    border-radius: 15px;
+    padding: 5px 40px;
+    background-color: white;
+    color: #696969;
+}
+
+.totalTipoLuna .tipoLunaBotones .tipoLunabtn:hover{    
+    background-color: #696969;
+    color: white;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+/* Luna características */
+.tipoLunaCarac{    
+    display: flex;
+    flex-direction: column;
+
+    border: solid 1px #696969;
+    border-radius: 5px;
+
+    padding: 5px 15px;
+
+    
+}
+
+.tipoLunaCarac .tipoLunaCaracTitulo{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 14px;
+    color: #696969;
+}
+
+.tipoLunaCarac .tipoLunaCaracSubti{
+    display: flex;
+    padding: 0px 5px;
+    color: #696969;
+}
+
+.tipoLunaCarac .tipoLunaLista{
+    display: flex;
+
+    padding: 10px 50px;
+    font-size: 14px;
+}
+
+.tipoLunaContinue{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* Segundo div del tipo de luna según escoja en los botones */
+.tipoLunaMedida{
+    display: flex;
+    flex-direction: column;
+
+    /* border: solid 1px #696969;
+    border-radius: 5px; */
+
+    padding: 5px 15px;
+    
+}
+
+.tipoLunaMedida h3{
+    color: #747474;
+    font-size: 16px;
+}
+
+.tipoLunaMedida ul{
+    color: #747474;
+    font-size: 14px;
+}
+
+.tipoLunaMedidaPart1{
+    background-color: #F9F9F9;
+
+    border: solid 1px #b4b4b4;
+    border-radius: 5px;
+    
+    margin-bottom: 10px;
+}
+
+.radioMedida h3{
+    padding-left: 10px;
+}
+
+.tipoMedidaEnca{
+    display: flex;
+
+    justify-content: space-between;
+    padding: 5px 15px;
+}
+
+.tipoMedidaEnca .radioMedida{
+    display: flex;
+}
+
+.tipoMedidaInterme{
+    display: flex;
+    flex-direction: column;
+
+    padding: 5px 40px;
+}
+
+.tipoMedidaInterme ul{  
+    padding: 5px 20px;
+}
+
+.tipoMedidaFina{
+    display: flex;
+    flex-direction: column;
+
+    padding: 5px 80px;    
+}
+
+.tipoLunaMedidaPart2{
+    display: flex;
+
+    background-color: #F9F9F9;
+
+    justify-content: space-between;
+    border: solid 1px #b4b4b4;
+    border-radius: 5px;
+
+    padding: 5px 15px;
+    
+    margin-bottom: 10px;
+}
+
+.medidaPart2Rad{
+    display: flex;
+
+    
+}
+
+.medidaPart2Rad h3{
+    padding-left: 10px;
+}
+
+.tipoLunaMedidaPart3{
+    display: flex;
+
+    justify-content: space-between;
+
+    background-color: #F9F9F9;
+
+    border: solid 1px #b4b4b4;
+    border-radius: 5px;
+
+    padding: 5px 15px;
+    
+    margin-bottom: 10px;
+    
+}
+
+.medidaPrt3Rad{
+    display: flex;
+}
+
+.medidaPrt3Rad h3{
+    padding-left: 10px;
+}
+
+
+.tipoLunaContinue .btnTipoBoton{
+    background-color: #FF7143;
+    color: white;
+
+    font-size: 18px;    
+
+    padding: 5px 40px;
+    margin-top: 40px;
+
+    cursor: pointer;
+}
+
+
+
+
+
+
+

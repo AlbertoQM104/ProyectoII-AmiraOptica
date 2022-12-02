@@ -1,0 +1,160 @@
+/* Footer parte 1 */
+.pie1{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 50px 0px;   
+    border-bottom: solid 3px; 
+    border-color:#EBEBEB;
+}
+
+.pie1 h3{
+    color: #666;
+    font-size: 26px;
+    padding: 0px 90px;
+}
+
+.redes-sociales{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.redes-sociales a{
+    text-decoration: none;
+    color: #7A7A7A;
+    background-color: #EBEBEB;
+    font-size: 26px;
+    padding: 10px 15px;
+    margin: 0 10px;
+    border-radius: 50%;
+}
+
+.novedades{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.novedades input{
+    height: 40px;
+    border: solid 1.5px;
+    border-color: #7A7A7A;
+    border-radius: 10px;
+    padding: 0px 5px;
+    width: 300px;
+}
+
+/* Footer parte 2 */
+.pie2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 10px;
+}
+
+.pie2 a{
+    text-decoration: none;
+    color: #7A7A7A;
+    font-size: 18px;
+    padding: 0px 40px;
+}
+
+.pie3{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 10px;
+    border-top: solid 3px;     
+    border-color:#EBEBEB;
+}
+
+.pie3 h3{
+    font-size: 16px;
+    color:#7A7A7A;
+}
+
+.pie4{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 10px;
+}
+
+.pie4 h3{
+    font-size: 12px;
+    color:#7A7A7A;
+}
+
+@media  screen and (max-width: 1200px) {
+    .novedades input{        
+        width: 150px;
+    }
+
+    .pie1 h3{
+        color: #666;
+        font-size: 26px;
+        padding: 0px 40px;
+    }
+}
+
+@media  screen and (max-width: 850px) {
+    .novedades input{        
+        width: 100px;
+    }
+
+    .pie1 h3{        
+        font-size: 22px;
+        padding: 0px 15px;
+    }
+}
+
+@media screen and (max-width: 775px){
+    .novedades input{        
+        width: 100px;
+    }
+
+    .pie1 h3{        
+        font-size: 14px;
+        padding: 0px 15px;
+    }
+
+    .pie2 a{
+        text-decoration: none;
+        color: #7A7A7A;
+        font-size: 14px;
+        padding: 0px 20px;
+    }
+}
+
+@media screen and (max-width: 600px){
+    .novedades input{        
+        width: 100px;
+    }
+
+    .pie1 h3{        
+        font-size: 12px;
+        padding: 0px 10px;
+    }
+
+    .pie2 a{        
+        font-size: 12px;
+        padding: 0px 15px;
+    }
+}
+
+@media screen and (max-width: 560px){
+    .redes-sociales h3{
+        display: none;
+    }
+
+    .novedades{
+        display: none;
+    }
+}
+
+@media screen and (max-width: 400px){
+    .pie2{
+        display: none;
+    }
+}

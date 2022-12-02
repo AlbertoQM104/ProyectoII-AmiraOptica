@@ -1,0 +1,78 @@
+.totalDetalleCompr{
+    display: flex;
+    flex-direction: column;
+
+    background-color: white;
+    padding: 5px 50px;
+    padding-bottom: 60px;
+}
+
+.detalleTituloEnca{
+    display: flex;
+    border: solid 1px #868686;
+    border-radius: 10px;
+
+    margin-top: 20px;
+    padding: 10px;
+    color: gray;
+}
+
+.detalleCompraOnline1{
+    display: flex;
+    justify-content: space-between;
+
+    padding-top: 10px;
+    padding-left: 30px;
+    margin-right: 30px;
+}
+
+.detalleCompraOnline1 h3{
+    font-size: 18px;
+    color: #696969;
+}
+
+.detalleCompraOnline2{
+    display: flex;
+    justify-content: space-between;
+
+    padding-top: 10px;
+    padding-left: 30px;
+    margin-right: 30px;
+}
+
+.detalleCompraOnline2 h3{
+    font-size: 18px;
+    color: #696969;
+}
+
+.detalleCompraTarj{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.detalleCompraTarj{
+    font-size: 18px;
+    color: #383838;
+}
+
+.detalleCompraTarj1{
+    display: flex;
+}
+
+.detalleCompraTarj1 label{
+    margin-right: 40px;
+}
+
+/* Final estados */
+.tituloEstadoFinal{
+    display: flex;
+    margin-top: 20px;
+}
+
+.tituloEstadoFinal h3{
+    font-size: 18px;
+    color: #696969;
+}
+
+
