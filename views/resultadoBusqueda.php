@@ -126,3 +126,5 @@ if(isset($_POST['buscarProducto'])){
 </div>
 
 <?php require_once("./footer.php"); ?>
+
+<!-- pequeño cambio -->
