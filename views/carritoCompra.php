@@ -9,7 +9,7 @@
 /* require_once("../config/config.php"); */
 require_once("../library/conexion.php");
 
-$db = new  Conexion();
+$db = new Conexion;
 $con = $db->conecta();
 
 $productos = isset($_SESSION['carrito']['productos']) ? $_SESSION['carrito']['productos'] : null;
@@ -188,7 +188,7 @@ if($productos != null){
         
             <div class="entregIzTipoRec">
                 <div class="entregIzTipoRecTienda">
-                    <input type="radio" name="tipoRecojo" id="tipoRecojo" onclick="tipoRecojo()"> 
+                    <input type="radio" name="tipoRecojo" id="tipoRecojo" value="1" onclick="tipoRecojo()"> 
                         <div class="entregIzTipoRecTiendaSub"> 
                             <label for="tipoRecojo" class="lbl1">Recojo en tienda</label>
                             <label for="tipoRecojo" class="lbl2">recojo en tienda</label>                        
@@ -196,10 +196,10 @@ if($productos != null){
                     </input>
                 </div>
                 <div class="entregIzTipoRecDelivery">
-                    <input type="radio" name="tipoRecojo" id="tipoRecojo2" onclick="tipoDeli()">
+                    <input type="radio" name="tipoRecojo" id="tipoRecojo2" value="2" onclick="tipoDeli()">
                     <div class="entregIzTipoRecDeliverySub">
-                        <label name="metodoEnvio" for="tipoRecojo2" class="lbl1">Delivery</label>
-                        <label name="metodoEnvio" for="tipoRecojo2" class="lbl2">72 horas</label>   
+                        <label for="tipoRecojo2" class="lbl1">Delivery</label>
+                        <label for="tipoRecojo2" class="lbl2">72 horas</label>   
                     </div>
                 </div>
             </div>
@@ -232,20 +232,42 @@ if($productos != null){
 
         <!-- Resumen de productos -->
         <div class="entregDerProds">
-        
-            <?php for($i=0; $i<2; $i++){ ?>
 
-            <div class="entregDerProdUni">
-                <div class="imagenDerPr">
-                    <img src="../img/lente1.jpg" alt="">
-                </div>
-                <div class="datosProdResu">
-                    <h3>LENTE COD 1</h3>
-                    <p>S/. 300</p>
-                </div>
-            </div>
+            <!--  -->
+            <?php 
 
-            <?php } ?>
+                    if($lista_carrito == null){
+                        echo "<b>Lista vacía</b>";
+                    }else{
+
+                        foreach($lista_carrito as $producto2){ 
+
+                            $_id2 = $producto2['id'];
+                            $nombre2 = $producto2['nombre'];
+                            $precio2 = $producto2['precio'];                            
+                             
+                            
+                            $imagen2 = $producto2['imagen'];
+
+                            $imagen = "../admin/img/" . $imagen2;
+                            if (!file_exists($imagen)) {
+                                $imagen = '../img/img-no-image.jpg';
+                            }
+
+                            ?>
+
+                            <div class="entregDerProdUni">
+                                <div class="imagenDerPr">
+                                    <img src="<?php echo $imagen; ?>" alt="" width="50px">
+                                </div>
+                                <div class="datosProdResu">
+                                    <h3><?php echo $nombre2; ?></h3>
+                                    <p><?php echo MONEDA . number_format($precio2, 2, '.', ','); ?></p>
+                                </div>
+                            </div>
+                            <?php } ?>
+            
+                    
 
         </div>
 
@@ -263,13 +285,18 @@ if($productos != null){
                     <h2>IGV</h2>
                     <h3>S/35.00</h3>
                 </div>
+                
             </div>
+            
             <div class="carritoDerechaCuart">
                 <h2>TOTAL</h2>
                 <p id="total"><?php echo MONEDA . number_format($total, 2, '.', ','); ?></p>
+                <?php } ?>
             </div>
 
         </div>
+
+        
         
 
     </div>
@@ -286,51 +313,74 @@ if($productos != null){
         </div>
 
         <!-- DIV para pago con tarjeta de crédito  -->
-        <div class="pagoTarjetaCredito">
-            <div class="creditoEncab">
-                <input type="radio" name="radioTipoPago" id="radioCredito">
-                <div class="creditoEncabDeta">
-                    <label for="radioCredito">Tarjeta de crédito</label>
-                    <p>Ingresar información de la tarjeta</p>
+        <form action="">
+            <div class="pagoTarjetaCredito">
+                <div class="creditoEncab">                                      
+                    <div class="creditoEncabDeta">
+                    <input type="radio" name="radioTipoPago" id="radioCredito" value="Credito">  
+                        <label for="radioCredito">Tarjeta de crédito</label>
+                        <p>Ingresar información de la tarjeta</p>
+                    </div>
+                    <div class="creditoEncabDeta2">
+                        <input type="radio" name="radioTipoPago" id="radioCredito2" value="Debito">
+                        <label for="radioCredito2">Tarjeta de débito</label>
+                    </div>
                 </div>
+
+                <div class="creditoIntermed">
+                    <div class="creditoIntermed1">
+                        <input type="text" name="nroCredito" minlength="16" maxlength="16" placeholder="0000 0000 0000 0000"><label for="nroCredito"></label>
+                        <div class="fechaMesAnio">
+                            <input type="number" min="1" max="12" placeholder="MM" name="capturaMesT">
+                            <input type="number" min="13" max="33" placeholder="YY" name="capturaAnioT">
+                        </div>
+                        <input type="text" name="nroCV" minlength="3" maxlength="3" placeholder="CVV"> <label for="nroCV"></label>
+                    </div>
+                </div>
+
+                <div class="creditoIntermedFinal">
+                    <input type="text" name="duenoTarjet" placeholder="Nombre del titular" required>
+                </div>
+
             </div>
 
-            <div class="creditoIntermed">
-                <div class="creditoIntermed1">
-                    <input type="text" name="nroCredito" maxlength="16" placeholder="0000 0000 0000 0000"><label for="nroCredito"></label>
+            <!-- DEBITO -->
+            <!-- <div class="pagoTarjetaDebito">
+                <div class="debitoEncab">
+                    <input type="radio" name="radioTipoPago" id="radioDebito">
+                    <label for="radioDebito">Tarjeta de débito</label>
+                </div>
+
+                <div class="debitoIntermedio">
+                    <input type="text" maxlength="16" placeholder="0000 0000 0000 0000">
                     <input type="date">
-                    <input type="text" name="nroCV" maxlength="3" placeholder="CVV"> <label for="nroCV"></label>
+                    <input type="text" maxlength="3" placeholder="CVV" id="CVV2"> <label for="CVV2"></label>
                 </div>
+
+                <div class="debitoFinal">
+                    <input type="text" name="duenoDebit" placeholder="Nombre del titular">
+                </div>
+            </div> -->
+
+            <!-- Botón de pagar ahora -->
+            <div class="btnPagarN">
+                <button name="registrarTarjetaT">Pagar ahora</button>
             </div>
 
-            <div class="creditoIntermedFinal">
-                <input type="text" name="duenoTarjet" placeholder="Nombre del titular" required>
-            </div>
+            <?php if(isset($_POST['registrarTarjetaT'])){
+                            if($_SESSION == null) { ?>
+                                <script>
+                                    alert('Debe iniciar sesión primero antes de ingresar sus datos de tarjeta');
+                                </script>
+                <?php }else{ ?>
 
-        </div>
+                <?php require_once("../controller/controllerTarjeta.php"); ?>
 
-        <!-- DEBITO -->
-        <div class="pagoTarjetaDebito">
-            <div class="debitoEncab">
-                <input type="radio" name="radioTipoPago" id="radioDebito">
-                <label for="radioDebito">Tarjeta de débito</label>
-            </div>
+                <?php } }?>
 
-            <div class="debitoIntermedio">
-                <input type="text" maxlength="16" placeholder="0000 0000 0000 0000">
-                <input type="date">
-                <input type="text" maxlength="3" placeholder="CVV" id="CVV2"> <label for="CVV2"></label>
-            </div>
+            <?php ?>
 
-            <div class="debitoFinal">
-                <input type="text" name="duenoDebit" placeholder="Nombre del titular">
-            </div>
-        </div>
-
-        <!-- Botón de pagar ahora -->
-        <div class="btnPagarN">
-            <a href="./compraOnline.php">Pagar ahora</a>
-        </div>
+        </form>
     </div>
 
 
@@ -344,20 +394,41 @@ if($productos != null){
 
         <!-- Resumen de productos -->
         <div class="entregDerProds">
-        
-            <?php for($i=0; $i<2; $i++){ ?>
 
-            <div class="entregDerProdUni">
-                <div class="imagenDerPr">
-                    <img src="../img/lente1.jpg" alt="">
-                </div>
-                <div class="datosProdResu">
-                    <h3>LENTE COD 1</h3>
-                    <p>S/. 300</p>
-                </div>
-            </div>
+        <?php 
 
-            <?php } ?>
+            if($lista_carrito == null){
+                echo "<b>Lista vacía</b>";
+            }else{
+            
+            
+                foreach($lista_carrito as $producto3){ 
+                            $_id3 = $producto3['id'];
+                            $nombre3 = $producto3['nombre'];
+                            $precio3 = $producto3['precio'];
+                            $cantidad3 = $producto3['cantidad'];
+                            $subtotal3 = $cantidad * $precio;
+                             
+                            
+                            $imagen2 = $producto3['imagen'];
+
+                            $imagen = "../admin/img/" . $imagen2;
+                            if (!file_exists($imagen)) {
+                                $imagen = '../img/img-no-image.jpg';
+                            }
+            ?>
+
+                <div class="entregDerProdUni">
+                    <div class="imagenDerPr">
+                        <img src="<?php echo $imagen; ?>" alt="" width="50px">
+                    </div>
+                    <div class="datosProdResu">
+                        <h3><?php echo $nombre3; ?></h3>
+                        <p><?php echo MONEDA . number_format($precio3, 2, '.', ','); ?></p>
+                    </div>
+                </div>
+
+                <?php } ?>
 
         </div>
 
@@ -377,6 +448,7 @@ if($productos != null){
             <div class="carritoDerechaCuart">
                 <h2>TOTAL</h2>
                 <p id="total"><?php echo MONEDA . number_format($total, 2, '.', ','); ?></p>
+                <?php } ?>
             </div>
 
         </div>

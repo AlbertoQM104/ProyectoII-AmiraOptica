@@ -1,6 +1,6 @@
 <?php include("./header.php"); ?>
 
-<?php require_once("../controller/controllerPedidos.php"); ?>
+
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
@@ -87,55 +87,82 @@
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>ID</th>
+                                            <th>Nombre producto</th>
+                                            <th>Cantidad</th>
+                                            <th>#Pedido</th>
+                                            <th>Precio</th>
                                             <th>Fecha</th>
-                                            <th>Total</th>
-                                            <th>Estado</th>
-                                            <th>ID_Cliente</th>
-                                            <th>ID_Usuario</th>
-                                            <th>Modificar</th>
-                                            
-                                            
+                                            <th>ID</th>
+                                            <th>Status</th>
                                         </tr>
-                                    </thead>                                    
-                                    <tbody>
-
-                                    <?php
-                                     $bd = new Conexion;
-                                     $sql = "SELECT * FROM pedido";
-                                     $tabla = $bd -> conecta() -> prepare($sql);
-                                     $tabla -> execute();
-                                     $resultado = $tabla -> fetchAll(PDO::FETCH_OBJ);
-
-                                     try{
-                                     
-                                         foreach($resultado as $result){   
-                                      ?>
-
+                                    </thead>
+                                    <tfoot>
                                         <tr>
-                                            <td><?php echo $result -> id ?></td>
-                                            <td><?php echo $result -> fecha ?></td>
-                                            <td><?php echo $result -> total ?></td>
-                                            <td><?php echo $result -> estado ?></td>
-                                            <td><?php echo $result -> id_Cliente ?></td>
-                                            <td><?php echo $result -> id_usuario ?></td>                                            
-                                            <td>
-                                                <button type="button" class="btn btn-info editabtn" data-toggle="modal" data-target="#editarP">Editar</button>
-                                            </td>
+                                            <th>Nombre producto</th>
+                                            <th>Cantidad</th>
+                                            <th>#Pedido</th>
+                                            <th>Precio</th>
+                                            <th>Fecha</th>
+                                            <th>ID</th>
+                                            <th>Status</th>
+                                            
                                         </tr>
-                                        
-                                    <?php } 
-                                    
-                                         }catch(PDOException $e){
-                                            echo 'Falló el listado de pedidos: '.$e->getMessage();
-                                            die();
-                                         }finally{
-                                            $bd = null;
-                                            $tabla = null;
-                                            $resultado = null;
-                                         }
-                                    
-                                    ?>
+                                    </tfoot>
+                                    <tbody>
+                                        <tr>
+                                            <td>Lente código 0001</td>
+                                            <td>143</td>
+                                            <td>1233</td>
+                                            <td>S/.199.90</td>
+                                            <td>2022/11/20</td>
+                                            <td>39842</td>
+                                            <td>Cancelado</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Lente código 0001</td>
+                                            <td>143</td>
+                                            <td>1233</td>
+                                            <td>S/.199.90</td>
+                                            <td>2022/11/20</td>
+                                            <td>39842</td>
+                                            <td>Pendiente Pago</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Lente código 0001</td>
+                                            <td>143</td>
+                                            <td>1233</td>
+                                            <td>S/.199.90</td>
+                                            <td>2022/11/20</td>
+                                            <td>39842</td>
+                                            <td>Delivery</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Lente código 0001</td>
+                                            <td>143</td>
+                                            <td>1233</td>
+                                            <td>S/.199.90</td>
+                                            <td>2022/11/20</td>
+                                            <td>39842</td>
+                                            <td>Cancelado</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Lente código 0001</td>
+                                            <td>143</td>
+                                            <td>1233</td>
+                                            <td>S/.199.90</td>
+                                            <td>2022/11/20</td>
+                                            <td>39842</td>
+                                            <td>Delivery</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Lente código 0001</td>
+                                            <td>143</td>
+                                            <td>1233</td>
+                                            <td>S/.199.90</td>
+                                            <td>2022/11/20</td>
+                                            <td>39842</td>
+                                            <td>Cancelado</td>
+                                        </tr>
 
                                     </tbody>
                                 </table>
@@ -148,54 +175,6 @@
 
             </div>
             <!-- End of Main Content -->
-
-            <!-- Modal para editar pedido -->             
-            <div class="modal fade" id="editarP" tabindex="-1" role="dialog" aria-labelledby="my-modal-title" aria-labelledby="myModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-lg">
-                    <div class="modal-content">
-                        <div class="modal-header bg-gradient-primary text-white">
-                            <h5 class="modal-title" id="title">Editar Estado Pedido</h5>
-                            <button class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <form action="" method="POST" enctype="multipart/form-data" autocomplete="off">
-                                <input type="hidden" name="id" id="update_id">
-                                <div class="row">
-                                 <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="categoria">Categoria</label>
-                                            <select id="estadoPedido" class="form-control" name="estadoPedido" required>                                                
-                                                    <option value="PENDIENTE">PENDIENTE</option>
-                                                    <option value="PAGADO">PAGADO</option>
-                                                    <option value="EN CAMINO">EN CAMINO</option>
-                                                    <option value="ENTREGADO">ENTREGADO</option>                                                
-                                            </select>
-                                        </div>
-                                    </div>                                 
-                                </div>
-
-                                <button class="btn btn-primary" type="submit" name="editarPedido" id="editarPedido">Editar</button>
-                                
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Script para capturar datos para editar producto -->
-            <script>                
-                $('.editabtn').on('click', function(){
-
-                    $tr=$(this).closest('tr');
-                    var datos = $tr.children("td").map(function(){
-                        return $(this).text();
-                    });
-                    $('#update_id').val(datos[0]);
-                    $('#estadoPedido').val(datos[3]);                    
-                });
-            </script>
 
            
 <?php require_once("./footer.php"); ?>

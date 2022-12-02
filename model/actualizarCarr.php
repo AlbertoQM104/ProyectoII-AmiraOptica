@@ -25,7 +25,6 @@
         $datos['ok'] =  false;
     }
 
-    // modificación realizada para la actualizacion del carrito
     echo json_encode($datos);
 
     function agregar($id, $cantidad){
@@ -50,7 +49,11 @@
             return $res;
         }
     }
+    
 
+
+
+    
     function eliminar($id){
         if($id>0){
             if(isset($_SESSION['carrito']['productos'][$id])){

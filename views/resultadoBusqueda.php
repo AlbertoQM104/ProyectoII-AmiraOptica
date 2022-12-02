@@ -25,7 +25,7 @@ if(isset($_POST['buscarProducto'])){
 
     <div class="contenedorProductosTotal">
 
-<!-- Contenedores de filtros -->
+
         <div class="contenedorFiltros">
             <div class="contenedorFiltrosInterno">
                 <div class="filtroSuperior">

@@ -23,12 +23,12 @@
                                 </div>
                             </div>
                         </div><br>
-                        <a href="#" class="btn btn-primary btn-icon-split btn-lg">
+                        <!-- <a href="#" class="btn btn-primary btn-icon-split btn-lg">
                             <span class="icon text-white-50">
                                 <i class="fa fa-user-plus" aria-hidden="true"></i>
                             </span>
                             <span class="text">Añadir Usuarios</span>
-                        </a>
+                        </a> -->
                     </div>
 
                     <!-- TABLA DE DATOS -->
@@ -56,8 +56,8 @@
                                             <th>Eje izquierdo</th>                                            
                                             <th>Distancia Interpupilar</th>
                                             <th>ID_Cliente</th>
-                                            <th>Modificar</th>
-                                            <th>Eliminar</th>
+                                            <!-- <th>Modificar</th>
+                                            <th>Eliminar</th> -->
 
                                         </tr>
                                     </thead>
@@ -94,8 +94,8 @@
                                             <td><?php echo $result -> DistanciaInterpupilar ?></td>
                                             <td><?php echo $result -> id_cliente ?></td>
                                             
-                                            <td><a><button class="btn btn-info">Editar</button></a></td>
-                                            <td><button class="btn btn-danger eliminar"id="785">Eliminar</button> </td>
+                                            <!-- <td><a><button class="btn btn-info">Editar</button></a></td>
+                                            <td><button class="btn btn-danger eliminar"id="785">Eliminar</button> </td> -->
                                         </tr>
 
                                         <?php } ?>
