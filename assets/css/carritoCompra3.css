@@ -30,6 +30,8 @@
 .creditoEncab{
     display: flex;
 
+    justify-content: space-around;
+
     padding-bottom: 20px;
 }
 
@@ -43,6 +45,10 @@
 
 .creditoEncabDeta p{
     font-size: 14px;
+}
+
+.creditoEncabDeta2{
+    font-size: 16px;
 }
 
 .creditoIntermed1{
@@ -129,7 +135,7 @@
     margin-top: 10px;
 }
 
-.btnPagarN a{
+.btnPagarN button{
     color: white;
     background-color: #606060;
     

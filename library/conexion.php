@@ -5,7 +5,6 @@
     Class Conexion{
 
         /* En caso que no se pueda importar la carpeta "config" */
-        
         private $server = "localhost";
         private $user = "root";
         private $password = "";

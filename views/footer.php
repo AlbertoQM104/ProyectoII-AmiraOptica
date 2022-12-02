@@ -9,10 +9,10 @@
             <a href="" target="_blank"><i class="fa-brands fa-instagram"></i></a>
             <a href="" target="_blank"><i class="fa-brands fa-youtube"></i></a>
         </div>
-        <div class="novedades">
+        <!-- <div class="novedades">
             <h3>Recibe novedades</h3>
             <input type="email" name="contacto" placeholder="Ingrese su correo">
-        </div>
+        </div> -->
     </div>
 
     <div class="pie2">

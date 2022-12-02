@@ -1,6 +1,6 @@
 <?php
 
-include("../library/conexion.php");
+include_once("../library/conexion.php");
 
 class modelMedida{
 

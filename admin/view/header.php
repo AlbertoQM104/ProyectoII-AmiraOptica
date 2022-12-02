@@ -73,16 +73,23 @@ session_start();
 
            
             <!-- Nav Item - Tables -->
-            <li class="nav-item active">
-                <a class="nav-link" href="./Productos.php">
-                    <i class="fa fa-shopping-basket"></i>
-                    <span>Productos</span></a>
-            </li>
 
             <li class="nav-item active">
                 <a class="nav-link" href="./Pedidos.php">
                     <i class="fa fa-cart-arrow-down"></i>
                     <span>Pedidos</span></a>
+            </li>
+
+            <li class="nav-item active">
+                <a class="nav-link" href="./DetallePedidos.php">
+                    <i class="fa fa-cart-arrow-down"></i>
+                    <span>Detalle de Pedidos</span></a>
+            </li>
+
+            <li class="nav-item active">
+                <a class="nav-link" href="./Productos.php">
+                    <i class="fa fa-shopping-basket"></i>
+                    <span>Productos</span></a>
             </li>
 
             <li class="nav-item active">
