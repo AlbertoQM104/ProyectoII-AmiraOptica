@@ -1,5 +1,5 @@
 <?php require_once("./header.php"); ?>
-<!-- Esto cambió Fabio -->
+
 <div class="tituloMisCompras">
     <h1>MIS COMPRAS</h1>
 </div>
