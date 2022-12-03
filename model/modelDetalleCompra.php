@@ -38,6 +38,7 @@ class modelDetalleCompra{
             $registrarD -> bindParam(':Nombres', $nombres, PDO::PARAM_STR);
             $registrarD -> bindParam(':Apellidos', $apellidos, PDO::PARAM_STR);
             $registrarD -> bindParam(':provincia', $provincia, PDO::PARAM_STR);
+            
             $registrarD -> bindParam(':distrito', $distrito, PDO::PARAM_STR);
             $registrarD -> bindParam(':departamento', $departamento, PDO::PARAM_STR);
             $registrarD -> bindParam(':celular', $celular, PDO::PARAM_STR);
