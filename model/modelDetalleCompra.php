@@ -60,14 +60,15 @@ class modelDetalleCompra{
 
     }
 
-    public function editarDetalleCompra($metodoEnvio, $direccion1, $direccion2, $nombres, $apellidos, $provincia, $distrito, $departamento, $celular, $id_cliente){
+    public function editarDetalleCompra($metodoEnvio, $direccion1, $direccion2, $nombres, $apellidos, $provincia, $distrito, $departamento, $celular, $dni, $id_cliente){
         $bd = new Conexion;
         $valorTemp = 1;
 
         try{
 
             $consulta = "UPDATE detalle_envio SET id_pedido = :id_pedido, id_metodoEnvio = :id_metodoEnvio, direccion_1 = :direccion_1, direccion_2 = :direccion_2, 
-            Nombres = :Nombres, Apellidos = :Apellidos, provincia = :provincia, distrito = :distrito, departamento = :departamento, celular = :celular WHERE id_cliente = :id_cliente";
+            Nombres = :Nombres, Apellidos = :Apellidos, provincia = :provincia, distrito = :distrito, departamento = :departamento, celular = :celular, dniRecoge = :dniRecoge
+            WHERE id_cliente = :id_cliente";
 
             $editarD = $bd -> conecta() -> prepare($consulta);
             $editarD -> bindParam(':id_pedido', $valorTemp, PDO::PARAM_INT);
@@ -80,8 +81,8 @@ class modelDetalleCompra{
             $editarD -> bindParam(':distrito', $distrito, PDO::PARAM_STR);
             $editarD -> bindParam(':departamento', $departamento, PDO::PARAM_STR);
             $editarD -> bindParam(':celular', $celular, PDO::PARAM_STR);
-            /* $editarD -> bindParam(':dniRecoge', $dniRecoge, PDO::PARAM_STR);   */       
-            $editarD -> bindParam(':id_cliente', $id_cliente, PDO::PARAM_INT);
+            $editarD -> bindParam(':dniRecoge', $dni, PDO::PARAM_STR);      
+            $editarD -> bindParam(':id_cliente', $id_cliente, PDO::PARAM_STR);
             $editarD -> execute();
 
             echo '<script type="text/javascript">
