@@ -1,5 +1,7 @@
 <?php    
 
+/* error_reporting(0); */
+
     if(!isset($_SESSION)){
         session_start();
     }else{
@@ -9,7 +11,12 @@
 
     require_once("../config/config.php");
     /* session_start(); */
-     /* error_reporting(0);  */
+
+    /* print_r($_SESSION['carrito']['productos']);    
+    $json = file_get_contents('php://input');
+    $datos = json_decode($json, true);
+
+    print_r($datos); */
     /* print_r($_SESSION['DNI']); */
     /* print_r($_SESSION); */
 ?>
@@ -47,7 +54,25 @@
     <!-- <link rel="stylesheet" href="./assets/css-bootstrap/bootstrap.css">
     <link rel="stylesheet" href="./assets/css-bootstrap/bootstrap.min.css"> -->
     
+    <style type="text/css"> 
+        ul, ol{
+            list-style: none;
+        }
+        
 
+        .listaCliente1 li ul{
+            display: none;
+            position: absolute;     
+                
+        }
+        
+
+        .listaCliente1 li:hover > ul{
+            display:block;
+        }
+
+        
+    </style>
 
 
 </head>
@@ -88,7 +113,24 @@
 
                             <?php }else{ ?>
 
-                                <a href="../model/cerrarSesion.php" class="cuadro-login"><?php echo $_SESSION['nombre'] ?></a>
+                                <div class="listaCliente1">
+                                    <ul>
+                                        <li><a href="./index.php" class="cuadro-login"><?php echo $_SESSION['nombre'] ?></a>
+
+                                            
+
+                                                <ul style="background-color: #F9F8F8; border-radius: 15px;">
+                                                    <li style="padding-top: 15px;"><a href="./compraOnline.php">Compras</a></li>
+                                                    <li style="padding-top: 15px;"><a href="../model/cerrarSesion.php">Cerrar Sesión</a></li>
+                                                </ul>
+
+                                            
+
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                
 
                             <?php } ?>
 

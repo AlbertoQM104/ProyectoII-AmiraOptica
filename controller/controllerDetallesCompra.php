@@ -79,11 +79,11 @@ if(isset($_POST['registrarDetallesCompra'])){
             $distrito = $detalle -> getDistrito();
             $departamento = $detalle -> getDepartamento();
             $celular = $detalle -> getCelular();
-            /* $dni = $detalle -> getDNI(); */
+            $dni = $detalle -> getDNI();
             $idCliente = $detalle -> getIdCliente();
 
             /* Método para insertar */
-            $detalle -> insertarDetalleCompra($metodo, $direccion1, $direccion2, $nombre, $apellido, $provincia, $distrito, $departamento, $celular, $idCliente);
+            $detalle -> insertarDetalleCompra($metodo, $direccion1, $direccion2, $nombre, $apellido, $provincia, $distrito, $departamento, $celular, $dni, $idCliente);
             
         }
 

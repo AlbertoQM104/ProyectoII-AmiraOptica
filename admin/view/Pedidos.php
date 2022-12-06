@@ -91,8 +91,7 @@
                                             <th>Fecha</th>
                                             <th>Total</th>
                                             <th>Estado</th>
-                                            <th>ID_Cliente</th>
-                                            <th>ID_Usuario</th>
+                                            <th>ID_Cliente</th>                                            
                                             <th>Modificar</th>
                                             
                                             
@@ -117,8 +116,7 @@
                                             <td><?php echo $result -> fecha ?></td>
                                             <td><?php echo $result -> total ?></td>
                                             <td><?php echo $result -> estado ?></td>
-                                            <td><?php echo $result -> id_Cliente ?></td>
-                                            <td><?php echo $result -> id_usuario ?></td>                                            
+                                            <td><?php echo $result -> id_Cliente ?></td>                                                                                     
                                             <td>
                                                 <button type="button" class="btn btn-info editabtn" data-toggle="modal" data-target="#editarP">Editar</button>
                                             </td>
@@ -167,9 +165,10 @@
                                         <div class="form-group">
                                             <label for="categoria">Categoria</label>
                                             <select id="estadoPedido" class="form-control" name="estadoPedido" required>                                                
-                                                    <option value="PENDIENTE">PENDIENTE</option>
-                                                    <option value="PAGADO">PAGADO</option>
-                                                    <option value="EN CAMINO">EN CAMINO</option>
+                                                    <option value="RECIBIDO">RECIBIDO</option>
+                                                    <option value="PREPARANDO">PREPARANDO</option>
+                                                    <option value="EN RUTA">EN RUTA</option>
+                                                    <option value="LISTO PARA RECOJO">LISTO PARA RECOJO</option>
                                                     <option value="ENTREGADO">ENTREGADO</option>                                                
                                             </select>
                                         </div>

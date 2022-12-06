@@ -75,4 +75,15 @@
     color: #696969;
 }
 
+.estadoCompraF{
+    display: flex;
+    justify-content: center;
+
+    margin-top: 40px;
+}
+
+.estadoCompraF img{
+    width: 1500px;
+}
+
 

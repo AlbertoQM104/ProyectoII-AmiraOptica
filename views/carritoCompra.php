@@ -156,7 +156,7 @@ if($productos != null){
 </div>
 
 <!-- PANTALLA DE CARRITO 2 ENTREGA -->
-<div id="carritoDiv2" class="carritoEntregaTotal" style="display: none;">
+<div id="carritoDiv2" class="carritoEntregaTotal" style="display:none;">
 
     <!-- DIV IZQUIERDO -->
     <div class="EntregIzquierda">
@@ -180,7 +180,7 @@ if($productos != null){
                 </div>
                 <div class="entregIzCamposCuart">
                     <input type="text" name= "distritoG" placeholder="Distrito" id="distrit" required>
-                    <input type="text" name= "celularG" placeholder="Celular" id="celul" required>                    
+                    <input type="text" name= "celularG" placeholder="Celular" id="celul" minlength="9" maxlength="9" required>                    
                 </div>
             </div>
 
@@ -188,7 +188,7 @@ if($productos != null){
         
             <div class="entregIzTipoRec">
                 <div class="entregIzTipoRecTienda">
-                    <input type="radio" name="tipoRecojo" id="tipoRecojo" value="1" onclick="tipoRecojo()"> 
+                    <input type="radio" name="tipoRecojo" id="tipoRecojo" value="Recojo" onclick="tipoRecojo()"> 
                         <div class="entregIzTipoRecTiendaSub"> 
                             <label for="tipoRecojo" class="lbl1">Recojo en tienda</label>
                             <label for="tipoRecojo" class="lbl2">recojo en tienda</label>                        
@@ -196,7 +196,7 @@ if($productos != null){
                     </input>
                 </div>
                 <div class="entregIzTipoRecDelivery">
-                    <input type="radio" name="tipoRecojo" id="tipoRecojo2" value="2" onclick="tipoDeli()">
+                    <input type="radio" name="tipoRecojo" id="tipoRecojo2" value="Delivery" onclick="tipoDeli()" checked>
                     <div class="entregIzTipoRecDeliverySub">
                         <label for="tipoRecojo2" class="lbl1">Delivery</label>
                         <label for="tipoRecojo2" class="lbl2">72 horas</label>   
@@ -207,13 +207,13 @@ if($productos != null){
                 <button name="registrarDetallesCompra">Guardar Detalles</button>
 
                 <?php if(isset($_POST['registrarDetallesCompra'])){
-                            if($_SESSION == null) { ?>
+                            if($_SESSION['idCliente'] == null) { ?>
                                 <script>
                                     alert('Debe iniciar sesión primero antes de ingresar sus detalle de compras');
                                 </script>
                 <?php }else{ ?>
 
-                <?php require_once("../controller/controllerDetallesCompra.php"); ?>
+                    <?php require_once("../controller/controllerDetallesCompra.php"); ?>
 
                 <?php } }?>
 
@@ -303,7 +303,7 @@ if($productos != null){
 </div>
 
 <!-- PANTALLA DE CARRITO 3 PAGO -->
-<div id="carritoDiv3" class="carritoPagoTotal"  style="display: none;">
+<div id="carritoDiv3" class="carritoPagoTotal">
 
     <!-- DIV IZQUIERDO -->
     <div class="carritoPagoIzquierda">
@@ -313,16 +313,16 @@ if($productos != null){
         </div>
 
         <!-- DIV para pago con tarjeta de crédito  -->
-        <form action="">
+        <form action="" method="POST">
             <div class="pagoTarjetaCredito">
                 <div class="creditoEncab">                                      
                     <div class="creditoEncabDeta">
-                    <input type="radio" name="radioTipoPago" id="radioCredito" value="Credito">  
+                    <input type="radio" name="radioTipoPago" id="radioCredito" value="1" checked>  
                         <label for="radioCredito">Tarjeta de crédito</label>
                         <p>Ingresar información de la tarjeta</p>
                     </div>
                     <div class="creditoEncabDeta2">
-                        <input type="radio" name="radioTipoPago" id="radioCredito2" value="Debito">
+                        <input type="radio" name="radioTipoPago" id="radioCredito2" value="2">
                         <label for="radioCredito2">Tarjeta de débito</label>
                     </div>
                 </div>
@@ -368,13 +368,13 @@ if($productos != null){
             </div>
 
             <?php if(isset($_POST['registrarTarjetaT'])){
-                            if($_SESSION == null) { ?>
+                            if($_SESSION['idCliente'] == null) { ?>
                                 <script>
                                     alert('Debe iniciar sesión primero antes de ingresar sus datos de tarjeta');
                                 </script>
                 <?php }else{ ?>
 
-                <?php require_once("../controller/controllerTarjeta.php"); ?>
+                    <?php require_once("../controller/controllerTarjeta.php"); ?>
 
                 <?php } }?>
 

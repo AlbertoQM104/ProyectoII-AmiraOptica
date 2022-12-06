@@ -15,7 +15,41 @@
                                     <div class="col mr-2">
                                         <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                             NUEVOS REGISTROS</div>
-                                        <div class="h5 mb-0 font-weight-bold text-gray-800">430</div>
+
+                                            <!-- Capturar cantidad de registrados -->
+                                            <?php
+
+                                                $bd = new Conexion;
+
+                                                try{
+                                                
+                                                $consulta = "SELECT COUNT(*) from cliente";
+
+                                                $resultado = $bd-> conecta()->prepare($consulta);
+                                                $resultado -> execute();
+
+                                                $cantidadClientes = $resultado -> fetchColumn();
+
+                                                
+
+                                            ?>
+
+
+
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $cantidadClientes ?></div>
+
+                                        <?php
+                                        
+                                                }catch(PDOException $e){
+                                                    echo 'Falló la modificación de tarjeta: '.$e->getMessage();
+                                                    die();
+                                                }finally{
+                                                    $bd = null;
+                                                    $resultado = null;
+                                                }
+                                        
+                                        ?>
+
                                     </div>
                                     <div class="col-auto">
                                         <i class="fas fa-users fa-2x text-gray-300"></i>
@@ -46,8 +80,7 @@
                                             <th>Apellido</th>
                                             <th>Correo</th>
                                             <th>Contraseña</th>
-                                            <th>DNI</th>                                                                                       
-                                            <th>ID_Medida</th>
+                                            <th>DNI</th>  
                                             <th>Esfera derecho</th>
                                             <th>Cilindro derecho</th>
                                             <th>Eje derecho</th>
@@ -69,7 +102,7 @@
                                             $bd2 = new Conexion;
                                             $sql = "SELECT * 
                                                     FROM cliente tabla1 
-                                                    inner join medidas tabla2 on (tabla1.id = tabla2.id_cliente)";
+                                                    LEFT JOIN medidas tabla2 on (tabla1.id = tabla2.id_cliente)";
                                             $tabla = $bd2 -> conecta() -> prepare($sql);
                                             $tabla -> execute();
                                             $resultado = $tabla -> fetchAll(PDO::FETCH_OBJ);
@@ -83,8 +116,7 @@
                                             <td><?php echo $result -> apellidos ?></td>
                                             <td><?php echo $result -> correo ?></td>
                                             <td><?php echo $result -> contraseña ?></td>
-                                            <td><?php echo $result -> dni ?></td>
-                                            <td><?php echo $result -> id ?></td>
+                                            <td><?php echo $result -> dni ?></td>                                            
                                             <td><?php echo $result -> ld_esfera ?></td>
                                             <td><?php echo $result -> ld_cilindro ?></td>
                                             <td><?php echo $result -> ld_eje ?></td>

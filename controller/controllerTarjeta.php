@@ -15,67 +15,69 @@ if(isset($_POST['registrarTarjetaT'])){
 
     try{
 
+        $fechaA = date('Y-m-d');
+
         if($datosT){ //Si existe
 
             //Objeto
             $tarjeta = new modelRegisTarjetayPago;
 
-            //Guardar en el objeto
-            $tarjeta -> setId_Pedido($_POST['ldEsfera']);
-            $tarjeta -> setLd_cilindro($_POST['ldCilindro']);
-            $tarjeta -> setLd_eje($_POST['ldEje']);
-            $tarjeta -> setLi_esfera($_POST['liEsfera']);
-            $tarjeta -> setLi_cilindro($_POST['liCilindro']);
-            $tarjeta -> setLi_eje($_POST['liEje']);
-            $tarjeta -> setDistInterpupi($_POST['distanInterp']);
-            $tarjeta -> setId_cliente($_SESSION['idCliente']);
+            //Guardar en el objeto            
+            $tarjeta -> setId_metodoPago($_REQUEST['radioTipoPago']);
+            $tarjeta -> setNombreTitular($_POST['duenoTarjet']);
+            $tarjeta -> setNum_cuenta($_POST['nroCredito']);
+            $tarjeta -> setCcv($_POST['nroCV']);
+            $tarjeta -> setVencimientoMes($_POST['capturaMesT']);
+            $tarjeta -> setVencimientoAnio($_POST['capturaAnioT']);
+            $tarjeta -> setId_cliente($_SESSION['idCliente']);            
             
-            //Guardar en nuevas variables
-            $LDEsfera = $medida -> getLd_esfera();
-            $LDCilindro = $medida -> getLd_cilindro();
-            $LDEje = $medida -> getLd_eje();
-            $LIEsfera = $medida -> getLi_esfera();
-            $LICilindro = $medida -> getLi_cilindro();
-            $LIEje = $medida -> getLi_eje();
-            $DistanciaInterpupilar = $medida -> getDistInterpupi();
-            $IDCliente = $medida -> getId_cliente();
-
-            /* Método para actualizar */
-            $medida -> editarMedida($LDEsfera, $LDCilindro, $LDEje, $LIEsfera, $LICilindro, $LIEje, $DistanciaInterpupilar, $IDCliente);
-
-
-        }else{ //Si aún no existe
-
-            //Objeto
-            $medida = new modelMedida;
-
-            //Guardar en el objeto
-            $medida -> setLd_esfera($_POST['ldEsfera']);
-            $medida -> setLd_cilindro($_POST['ldCilindro']);
-            $medida -> setLd_eje($_POST['ldEje']);
-            $medida -> setLi_esfera($_POST['liEsfera']);
-            $medida -> setLi_cilindro($_POST['liCilindro']);
-            $medida -> setLi_eje($_POST['liEje']);
-            $medida -> setDistInterpupi($_POST['distanInterp']);
-            $medida -> setId_cliente($_SESSION['idCliente']);
-            
-            //Guardar en nuevas variables
-            $LDEsfera = $medida -> getLd_esfera();
-            $LDCilindro = $medida -> getLd_cilindro();
-            $LDEje = $medida -> getLd_eje();
-            $LIEsfera = $medida -> getLi_esfera();
-            $LICilindro = $medida -> getLi_cilindro();
-            $LIEje = $medida -> getLi_eje();
-            $DistanciaInterpupilar = $medida -> getDistInterpupi();
-            $IDCliente = $medida -> getId_cliente();
+            //Guardar en nuevas variables            
+            $metodoPago = $tarjeta -> getId_metodoPago();
+            $nom = $tarjeta -> getNombreTitular();
+            $nroCredito = $tarjeta -> getNum_cuenta();
+            $nroCv = $tarjeta -> getCcv();
+            $mesT = $tarjeta -> getVencimientoMes();
+            $anioT = $tarjeta -> getVencimientoAnio();
+            $idCliente = $tarjeta -> getId_cliente();
 
             /* Método para insertar */
-            $medida -> insertarMedida($LDEsfera, $LDCilindro, $LDEje, $LIEsfera, $LICilindro, $LIEje, $DistanciaInterpupilar, $IDCliente);
+            $tarjeta -> editarTarjeta($metodoPago, $nom, $nroCredito, $nroCv, $mesT, $anioT, $idCliente, $fechaA, $total);
+
+
+        }else{ //Si aún no existe            
+
+            //Objeto
+            $tarjeta = new modelRegisTarjetayPago;
+
+            //Guardar en el objeto            
+            $tarjeta -> setId_metodoPago($_REQUEST['radioTipoPago']);
+            $tarjeta -> setNombreTitular($_POST['duenoTarjet']);
+            $tarjeta -> setNum_cuenta($_POST['nroCredito']);
+            $tarjeta -> setCcv($_POST['nroCV']);
+            $tarjeta -> setVencimientoMes($_POST['capturaMesT']);
+            $tarjeta -> setVencimientoAnio($_POST['capturaAnioT']);
+            $tarjeta -> setId_cliente($_SESSION['idCliente']);            
+            
+            //Guardar en nuevas variables            
+            $metodoPago = $tarjeta -> getId_metodoPago();
+            $nom = $tarjeta -> getNombreTitular();
+            $nroCredito = $tarjeta -> getNum_cuenta();
+            $nroCv = $tarjeta -> getCcv();
+            $mesT = $tarjeta -> getVencimientoMes();
+            $anioT = $tarjeta -> getVencimientoAnio();
+            $idCliente = $tarjeta -> getId_cliente();
+
+            /* Fecha */
+            
+
+
+            /* Método para actualizar */
+            $tarjeta -> insertarTarjeta($metodoPago, $nom, $nroCredito, $nroCv, $mesT, $anioT, $idCliente, $fechaA, $total);
             
         }
 
     }catch (PDOException $e){
-        echo 'Falló el registro de las medidas: '.$e->getMessage();
+        echo 'Falló el registro de la tarjeta: '.$e->getMessage();
         die();
     }finally{
         $medida = null;
