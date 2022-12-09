@@ -457,6 +457,7 @@ if($productos != null){
     </div>
 
 </div>
-
+<!-- database is correct -->
+<!-- CONEXION IS CORRECT -->
 
 <?php require_once("./footer.php"); ?>
