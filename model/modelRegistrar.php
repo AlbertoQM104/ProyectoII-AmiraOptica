@@ -1,5 +1,5 @@
 <?php
-
+// Conexión con la BD
 include("../library/conexion.php");
 
 class modelRegistrar{

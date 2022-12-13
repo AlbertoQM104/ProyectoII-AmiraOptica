@@ -1,3 +1,4 @@
+<!-- Conectividad con el header  -->
 <?php require_once("./header.php"); ?>
 
 <?php 
