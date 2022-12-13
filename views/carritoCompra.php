@@ -7,6 +7,7 @@
 <?php 
 
 /* require_once("../config/config.php"); */
+// conexión con la bd
 require_once("../library/conexion.php");
 
 $db = new Conexion;
@@ -14,8 +15,10 @@ $con = $db->conecta();
 
 $productos = isset($_SESSION['carrito']['productos']) ? $_SESSION['carrito']['productos'] : null;
 
+// creación del listado del carrito
 $lista_carrito = array();
 
+// guardado de los objetos del carrito
 if($productos != null){
     foreach($productos as $clave => $cantidad){
         $sql = $con->prepare("SELECT id, nombre, precio, $cantidad AS cantidad, imagen FROM producto WHERE id=?");

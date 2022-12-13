@@ -1,6 +1,6 @@
 <?php
 
-
+// conexiones con la bd, el config y la inclusión de la BD
 require '../config/database.php';
 include("conexion.php");
 require '../model/config.php';
@@ -8,7 +8,7 @@ require '../model/config.php';
 error_reporting(0);
 
 
-
+// creación de bd y conectarla
 $db = new  Database();
 $con = $db->conectar();
 
@@ -51,6 +51,7 @@ if($id == '' || $token == ''){
     } 
 }
 
+// consulta a la bd de los productos
 $sql = $con->prepare("SELECT codigo, nombre, descripcion, precio_normal, imagen FROM mibase1.productos WHERE idcategoria=4");
 $sql->execute();
 $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
@@ -64,6 +65,7 @@ $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
 <br>
 <br>
 
+<!-- plantilla de detalles de objeto -->
 <main>
     <div class="container">
         <div class="row">

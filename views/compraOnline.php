@@ -1,9 +1,11 @@
+<!-- conexión con el header -->
 <?php require_once("./header.php"); ?>
 <!-- Esto cambió Fabio -->
 <div class="tituloMisCompras">
     <h1>MIS COMPRAS</h1>
 </div>
 
+<!-- contador de la compra online -->
 <div class="conteCompraOnline">
 
 
@@ -68,4 +70,5 @@
 
 </div>
 
+<!-- conexión con el footer -->
 <?php require_once("./footer.php"); ?>
