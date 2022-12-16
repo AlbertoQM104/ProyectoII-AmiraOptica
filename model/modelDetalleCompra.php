@@ -4,7 +4,7 @@ include_once("../library/conexion.php");
 
 class modelDetalleCompra{
 
-    private $idMetodoEnvio;
+    
     private $direccion1;
     private $direccion2;
     private $nombres;
@@ -18,7 +18,7 @@ class modelDetalleCompra{
 
     public function __construct(){}
 
-    public function insertarDetalleCompra($metodoEnvio, $direccion1, $direccion2, $nombres, $apellidos, $provincia, $distrito, $departamento, $celular, $dniRecoge, $id_cliente){
+    public function insertarDetalleCompra($direccion1, $direccion2, $nombres, $apellidos, $provincia, $distrito, $departamento, $celular, $dniRecoge, $id_cliente){
 
         $bd = new Conexion;        
 
@@ -26,11 +26,10 @@ class modelDetalleCompra{
 
             
 
-            $consulta = "INSERT INTO detalle_envio(metodoEnvio, direccion_1, direccion_2, Nombres, Apellidos, provincia, distrito, departamento, celular, dniRecoge, id_cliente) 
-            VALUES (:metodoEnvio, :direccion_1, :direccion_2, :Nombres, :Apellidos, :provincia, :distrito, :departamento, :celular, :dniRecoge, :id_cliente)";
+            $consulta = "INSERT INTO detalle_envio(direccion_1, direccion_2, Nombres, Apellidos, provincia, distrito, departamento, celular, dniRecoge, id_cliente) 
+            VALUES (:direccion_1, :direccion_2, :Nombres, :Apellidos, :provincia, :distrito, :departamento, :celular, :dniRecoge, :id_cliente)";
 
-            $registrarD = $bd -> conecta() -> prepare($consulta);            
-            $registrarD -> bindParam(':metodoEnvio', $metodoEnvio, PDO::PARAM_STR);
+            $registrarD = $bd -> conecta() -> prepare($consulta);   
             $registrarD -> bindParam(':direccion_1', $direccion1, PDO::PARAM_STR);
             $registrarD -> bindParam(':direccion_2', $direccion2, PDO::PARAM_STR);
             $registrarD -> bindParam(':Nombres', $nombres, PDO::PARAM_STR);
@@ -58,18 +57,17 @@ class modelDetalleCompra{
 
     }
 
-    public function editarDetalleCompra($metodoEnvio, $direccion1, $direccion2, $nombres, $apellidos, $provincia, $distrito, $departamento, $celular, $dni, $id_cliente){
+    public function editarDetalleCompra($direccion1, $direccion2, $nombres, $apellidos, $provincia, $distrito, $departamento, $celular, $dni, $id_cliente){
         $bd = new Conexion;
         $valorTemp = 1;
 
         try{
 
-            $consulta = "UPDATE detalle_envio SET metodoEnvio = :metodoEnvio, direccion_1 = :direccion_1, direccion_2 = :direccion_2, 
+            $consulta = "UPDATE detalle_envio SET direccion_1 = :direccion_1, direccion_2 = :direccion_2, 
             Nombres = :Nombres, Apellidos = :Apellidos, provincia = :provincia, distrito = :distrito, departamento = :departamento, celular = :celular, dniRecoge = :dniRecoge
             WHERE detalle_envio.id_cliente = :id_cliente";
 
-            $editarD = $bd -> conecta() -> prepare($consulta);            
-            $editarD -> bindParam(':metodoEnvio', $metodoEnvio, PDO::PARAM_STR);
+            $editarD = $bd -> conecta() -> prepare($consulta);   
             $editarD -> bindParam(':direccion_1', $direccion1, PDO::PARAM_STR);
             $editarD -> bindParam(':direccion_2', $direccion2, PDO::PARAM_STR);
             $editarD -> bindParam(':Nombres', $nombres, PDO::PARAM_STR);
@@ -95,11 +93,7 @@ class modelDetalleCompra{
             $bd = null;
         }
     }
-
-    public function setIdMetodoEnvio(string $metodo){
-        $this -> idMetodoEnvio = $metodo;
-    }
-
+    
     public function setDireccion1(string $direccion11){
         $this -> direccion1 = $direccion11;
     }
@@ -138,10 +132,6 @@ class modelDetalleCompra{
 
     public function setIdCliente(string $idCliente){
         $this -> idCliente = $idCliente;
-    }
-
-    public function getIdMetodoEnvio(): string{
-        return $this -> idMetodoEnvio;
     }
 
     public function getDireccion1(): string{

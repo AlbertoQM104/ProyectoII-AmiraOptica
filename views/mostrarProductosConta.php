@@ -22,40 +22,6 @@ $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
 <div class="contenedorProductosTotal">
 
 
-    <div class="contenedorFiltros">
-        <div class="contenedorFiltrosInterno">
-            <div class="filtroSuperior">
-                <div class="superiorDatos1">
-                    <h4>Filtrar Por</h4>
-                </div>            
-                <div class="superiorDatos2">
-                    <h4>Limpiar Todo</h4>
-                </div>     
-            </div>
-            <div class="filtroGenero">
-                <h3>Género</h3>
-                <label for="hombre"><input type="checkbox" id="hombre" value="hombre">Hombre</label>
-                <label for="mujer"><input type="checkbox" id="mujer" value="mujer">Mujer</label>
-                <label for="nina"><input type="checkbox" id="nina" value="nina">Niña</label>
-                <label for="nino"><input type="checkbox" id="nino" value="nino">Niño</label>
-                <label for="unisex"><input type="checkbox" id="unisex" value="unisex">Unisex</label>
-                <label for="unisexNinos"><input type="checkbox" id="unisexNinos" value="unisexNinos">Unisex/Niños</label>
-            </div>
-            <div class="filtroColor">
-            <h3>Color de montura</h3>
-                <label for="azul"><input type="checkbox" id="azul" value="azul">Azul</label>
-                <label for="dorado"><input type="checkbox" id="dorado" value="dorado">Dorado</label>
-                <label for="negro"><input type="checkbox" id="negro" value="negro">Negro</label>
-                <label for="plateado"><input type="checkbox" id="plateado" value="plateado">Plateado</label>
-                <label for="transparente"><input type="checkbox" id="transparente" value="transparente">Transparente</label>
-                <label for="havana"><input type="checkbox" id="havana" value="havana">Havana</label>
-                <label for="rosa"><input type="checkbox" id="rosa" value="rosa">Rosa</label>
-                <label for="violeta"><input type="checkbox" id="violeta" value="violeta">Violeta</label>
-                <label for="rojo"><input type="checkbox" id="rojo" value="rojo">Rojo</label>
-            </div>
-        </div>
-    </div>
-
     <div class="contenedorProductos">
 
         <div class="contenedorSuperior">

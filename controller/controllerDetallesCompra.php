@@ -20,8 +20,7 @@ if(isset($_POST['registrarDetallesCompra'])){
             //Objeto
             $detalle = new modelDetalleCompra;
 
-            //Guardar en el objeto
-            $detalle -> setIdMetodoEnvio($_REQUEST['tipoRecojo']);
+            //Guardar en el objeto            
             $detalle -> setDireccion1($_POST['primeraDireccion']);
             $detalle -> setDireccion2($_POST['segundaDireccion']);
             $detalle -> setNombres($_POST['firstname']);
@@ -33,8 +32,7 @@ if(isset($_POST['registrarDetallesCompra'])){
             $detalle -> setDniRecoge($_SESSION['DNI']);
             $detalle -> setIdCliente($_SESSION['idCliente']);
             
-            //Guardar en nuevas variables
-            $metodo = $detalle -> getIdMetodoEnvio();
+            //Guardar en nuevas variables            
             $direccion1 = $detalle -> getDireccion1();
             $direccion2 = $detalle -> getDireccion2();
             $nombre = $detalle -> getNombres();
@@ -48,7 +46,7 @@ if(isset($_POST['registrarDetallesCompra'])){
             
 
             /* Método para actualizar */
-            $detalle -> editarDetalleCompra($metodo, $direccion1, $direccion2, $nombre, $apellido, $provincia, $distrito, $departamento, $celular, $dni, $idCliente);
+            $detalle -> editarDetalleCompra($direccion1, $direccion2, $nombre, $apellido, $provincia, $distrito, $departamento, $celular, $dni, $idCliente);
 
 
         }else{ //Si aún no existe
@@ -56,8 +54,7 @@ if(isset($_POST['registrarDetallesCompra'])){
             //Objeto
             $detalle = new modelDetalleCompra;
 
-            //Guardar en el objeto
-            $detalle -> setIdMetodoEnvio($_REQUEST['tipoRecojo']);
+            //Guardar en el objeto            
             $detalle -> setDireccion1($_POST['primeraDireccion']);
             $detalle -> setDireccion2($_POST['segundaDireccion']);
             $detalle -> setNombres($_POST['firstname']);
@@ -69,8 +66,7 @@ if(isset($_POST['registrarDetallesCompra'])){
             $detalle -> setDniRecoge($_SESSION['DNI']);
             $detalle -> setIdCliente($_SESSION['idCliente']);
             
-            //Guardar en nuevas variables
-            $metodo = $detalle -> getIdMetodoEnvio();
+            //Guardar en nuevas variables            
             $direccion1 = $detalle -> getDireccion1();
             $direccion2 = $detalle -> getDireccion2();
             $nombre = $detalle -> getNombres();
@@ -83,7 +79,7 @@ if(isset($_POST['registrarDetallesCompra'])){
             $idCliente = $detalle -> getIdCliente();
 
             /* Método para insertar */
-            $detalle -> insertarDetalleCompra($metodo, $direccion1, $direccion2, $nombre, $apellido, $provincia, $distrito, $departamento, $celular, $dni, $idCliente);
+            $detalle -> insertarDetalleCompra($direccion1, $direccion2, $nombre, $apellido, $provincia, $distrito, $departamento, $celular, $dni, $idCliente);
             
         }
 

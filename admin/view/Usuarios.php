@@ -41,7 +41,7 @@
                                         <?php
                                         
                                                 }catch(PDOException $e){
-                                                    echo 'Falló la modificación de tarjeta: '.$e->getMessage();
+                                                    echo 'Falló la mostrar cantidad de registrado: '.$e->getMessage();
                                                     die();
                                                 }finally{
                                                     $bd = null;
@@ -71,6 +71,19 @@
                             <h6 class="m-0 font-weight-bold text-primary">REGISTRO DE USUARIOS</h6>
                         </div>
                         <div class="card-body">
+
+                        <div class="table-responsive">
+                        <div class="table-responsive">
+                                <div class="dropdown show">
+                                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                      Exportar Data
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                      <a class="dropdown-item" target="_blank" href="/ExcelUsuario.php">Excel</a>
+                                      <a class="dropdown-item" target="_blank" href="/ReporteUsuarios.php">PDF</a>
+                                    </div>
+                                  </div><br>                  
+
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>

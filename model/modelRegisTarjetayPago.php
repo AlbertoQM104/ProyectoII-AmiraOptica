@@ -11,14 +11,14 @@ class modelRegisTarjetayPago{
     private $ccv;
     private $vencimientoMes;
     private $vencimientoAnio;
-    private $banco;
+    private $metodoDeEnvio;
     private $id_cliente;
 
 
     public function __construct(){}
 
     public function insertarTarjeta($id_metodoPago, $nombre, $num_cuenta, $ccv, $vencimientoMes, $vencimientoAnio, $id_cliente,
-     $fecha, $total){
+     $fecha, $total, $metodoEnvio){
         $bd = new Conexion;
         $con = $bd -> conecta(); 
 
@@ -42,8 +42,8 @@ class modelRegisTarjetayPago{
 
                 $estadoP="RECIBIDO";                
                 
-                $consulta2 = "INSERT INTO pedido (fecha, total, estado, id_Cliente, id_detEnvio, id_detpago) 
-                VALUES (:fecha, :total, :estado, :id_Cliente, :id_detEnvio, :id_detpago)";
+                $consulta2 = "INSERT INTO pedido (fecha, total, estado, metodoEnvio, id_Cliente, id_detEnvio, id_detpago) 
+                VALUES (:fecha, :total, :estado, :metodoEnvio, :id_Cliente, :id_detEnvio, :id_detpago)";
 
                 
                 $cons = $con -> prepare("SELECT id from detalle_envio WHERE id_cliente = ?");
@@ -54,6 +54,7 @@ class modelRegisTarjetayPago{
                 $regisPedido -> bindParam(':fecha', $fecha, PDO::PARAM_STR);
                 $regisPedido -> bindParam(':total', $total, PDO::PARAM_STR);
                 $regisPedido -> bindParam(':estado', $estadoP, PDO::PARAM_STR);
+                $regisPedido -> bindParam(':metodoEnvio', $metodoEnvio, PDO::PARAM_STR);
                 $regisPedido -> bindParam(':id_Cliente', $id_cliente, PDO::PARAM_STR);
                 $regisPedido -> bindParam(':id_detEnvio', $idDetalleEnvio, PDO::PARAM_STR);
                 $regisPedido -> bindParam(':id_detpago', $id_detallePago, PDO::PARAM_STR);
@@ -76,6 +77,8 @@ class modelRegisTarjetayPago{
                             (?,?,?,?)");
             
                             $sql_insert->execute([$id, $clave, $row_prod['nombre'], $cantidad]);
+
+                            $this -> actualizarStock($clave, $cantidad);
             
                         }
                     }
@@ -84,7 +87,7 @@ class modelRegisTarjetayPago{
 
                     echo '<script type="text/javascript">
                     alert("¡Registro de tarjeta exitoso y pedido!");
-                    window.location.href="../views/carritoCompra.php";
+                    window.location.href="../views/compraOnline.php";
                     </script>';                
                     exit();
             
@@ -107,7 +110,7 @@ class modelRegisTarjetayPago{
     }
 
     public function editarTarjeta($id_metodoPago, $nombre, $num_cuenta, $ccv, $vencimientoMes, $vencimientoAnio, $id_cliente,
-    $fecha, $total){
+    $fecha, $total, $metodoEnvio){
         $bd = new Conexion; 
         $con = $bd -> conecta(); 
 
@@ -129,10 +132,10 @@ class modelRegisTarjetayPago{
                 
             if($editar){
 
-                $estadoP="PAGADO";                
+                $estadoP="RECIBIDO";
                 
-                $consulta2 = "INSERT INTO pedido (fecha, total, estado, id_Cliente, id_detEnvio, id_detpago) 
-                VALUES (:fecha, :total, :estado, :id_Cliente, :id_detEnvio, :id_detpago)";
+                $consulta2 = "INSERT INTO pedido (fecha, total, estado, metodoEnvio, id_Cliente, id_detEnvio, id_detpago) 
+                VALUES (:fecha, :total, :estado, :metodoEnvio, :id_Cliente, :id_detEnvio, :id_detpago)";
                 
                 $cons2 = $bd -> conecta() -> prepare("SELECT id from detalle_envio WHERE id_cliente = ?");
                 $cons2 -> execute([$id_cliente]);
@@ -146,6 +149,7 @@ class modelRegisTarjetayPago{
                 $editarPedido -> bindParam(':fecha', $fecha, PDO::PARAM_STR);
                 $editarPedido -> bindParam(':total', $total, PDO::PARAM_STR);
                 $editarPedido -> bindParam(':estado', $estadoP, PDO::PARAM_STR);
+                $editarPedido -> bindParam(':metodoEnvio', $metodoEnvio, PDO::PARAM_STR);
                 $editarPedido -> bindParam(':id_Cliente', $id_cliente, PDO::PARAM_STR);
                 $editarPedido -> bindParam(':id_detEnvio', $idDetalleEnvio2, PDO::PARAM_INT);
                 $editarPedido -> bindParam(':id_detpago', $idPagoD, PDO::PARAM_INT);
@@ -168,6 +172,8 @@ class modelRegisTarjetayPago{
                             (?,?,?,?)");
             
                             $sql_insert->execute([$id, $clave, $row_prod['nombre'], $cantidad]);
+
+                            $this -> actualizarStock($clave, $cantidad);
             
                         }
                     }
@@ -176,7 +182,7 @@ class modelRegisTarjetayPago{
 
                     echo '<script type="text/javascript">
                     alert("Editado de tarjeta exitoso y pedido realizado!");
-                    window.location.href="../views/carritoCompra.php";
+                    window.location.href="../views/compraOnline.php";
                     </script>';                
                     exit();
             
@@ -191,11 +197,44 @@ class modelRegisTarjetayPago{
             $con = null;
             $cons2 = null;
             $idDetalleEnvio2 = null;
+
+            /* Actualizar */
+            $basedatos = null;
+            $conex = null;
+            $capturarS = null;
+            $stockActual = null;
+            $actualizarStock = null;
         }
     }
 
-    public function pagar(){
+    public function actualizarStock($id, $cantidad){
 
+        $basedatos = new Conexion; 
+        $conex = $basedatos -> conecta(); 
+
+        try{
+
+            $capturarS = $conex -> prepare("SELECT stock FROM producto WHERE id = ?");
+            $capturarS -> execute([$id]);
+
+            $stockActual = $capturarS -> fetchColumn();
+
+            $restar = $stockActual - $cantidad;
+
+            /* Actualizar con update */
+            $actualizarStock = $conex -> prepare("UPDATE producto SET stock = ? WHERE producto.id = ?");
+            $actualizarStock -> execute([$restar, $id]);
+
+
+        }catch(PDOException $e){
+            echo 'Falló al actualizar stock: '.$e->getMessage();
+            die();
+        }
+
+    }
+
+    public function setMetodoDeEnvio(string $metodoEnvio){
+        $this -> metodoDeEnvio = $metodoEnvio;
     }
 
     public function setId_Pedido(string $IDPedido){
@@ -228,6 +267,10 @@ class modelRegisTarjetayPago{
 
     public function setId_cliente(string $idCliente){
         $this -> id_cliente = $idCliente;
+    }
+
+    public function getMetodoDeEnvio(): string{
+        return $this -> metodoDeEnvio;
     }
 
     public function getId_Pedido(): string{

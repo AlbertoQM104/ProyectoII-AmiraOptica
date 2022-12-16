@@ -7,7 +7,6 @@
 <?php 
 
 /* require_once("../config/config.php"); */
-// conexión con la bd
 require_once("../library/conexion.php");
 
 $db = new Conexion;
@@ -15,10 +14,8 @@ $con = $db->conecta();
 
 $productos = isset($_SESSION['carrito']['productos']) ? $_SESSION['carrito']['productos'] : null;
 
-// creación del listado del carrito
 $lista_carrito = array();
 
-// guardado de los objetos del carrito
 if($productos != null){
     foreach($productos as $clave => $cantidad){
         $sql = $con->prepare("SELECT id, nombre, precio, $cantidad AS cantidad, imagen FROM producto WHERE id=?");
@@ -124,7 +121,7 @@ if($productos != null){
                     <tr>
                         <td colspan="3"></td>
                         <td colspan="2">
-                            <p class="3" id="total">TOTAL:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo MONEDA . number_format($total, 2, '.', ','); ?></p>
+                            <p class="3" id="total">TOTAL SIN IGV:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo MONEDA . number_format($total, 2, '.', ','); ?></p>
                         </td>
                     </tr>
 
@@ -168,44 +165,134 @@ if($productos != null){
         <div class="entregIzEnca">
             <h1>Detalles de la Compra</h1>
         </div>
-        <!-- Campos a llenar -->
-        <form action="" method="POST">
-            <div class="entregIzCampos" id="cuandoDelivery">
-                <div class="entregIzCamposPrim">
-                    <input type="text" name="firstname" placeholder="Nombres" id="firstName" required>
-                    <input type="text" name="firstSurname" placeholder="Apellidos" id="firstSurname" required>
-                </div>
-                <input type="text" name="primeraDireccion" placeholder="Dirección 1" id="firstDirection" required>
-                <input type="text" name="segundaDireccion" placeholder="Dirección 2" id="secondDirection" required>
-                <div class="entregIzCamposTerc">
-                    <input type="text" name="provinciaG" placeholder="Provincia" id="provinc" required>
-                    <input type="text" name="departamentoG" placeholder="Departamento" id="depart" required>
-                </div>
-                <div class="entregIzCamposCuart">
-                    <input type="text" name= "distritoG" placeholder="Distrito" id="distrit" required>
-                    <input type="text" name= "celularG" placeholder="Celular" id="celul" minlength="9" maxlength="9" required>                    
-                </div>
-            </div>
+
+        <?php
+        
+        $bd = new Conexion;
+        $con = $bd -> conecta();
+
+        try{
+
+             $consultaDats = $con -> prepare("SELECT * FROM detalle_envio WHERE id_cliente = ?");
+             $consultaDats -> execute([$_SESSION["idCliente"]]);
+
+             $dats = $consultaDats -> fetchAll(PDO::FETCH_OBJ);
+
+             if($dats){
+
+                
+
+                foreach($dats as $row2){        
+                    
+        
+        ?>
+
+                    <!-- Campos a llenar -->                    
+                    <form action="" method="POST">                        
+                        <div class="entregIzCampos" id="cuandoDelivery">
+                            <div class="entregIzCamposPrim">
+                                <input type="text" name="firstname" placeholder="Nombres" id="firstName" value="<?php echo $row2->Nombres?>" required>
+                                <input type="text" name="firstSurname" placeholder="Apellidos" id="firstSurname" value="<?php echo $row2->Apellidos?>" required>
+                            </div>
+                            <input type="text" name="primeraDireccion" placeholder="Dirección 1" id="firstDirection" value="<?php echo $row2->direccion_1?>" required>
+                            <input type="text" name="segundaDireccion" placeholder="Dirección 2" id="secondDirection" value="<?php echo $row2->direccion_2?>" required>
+                            <div class="entregIzCamposTerc">
+                                <input type="text" name="provinciaG" placeholder="Provincia" id="provinc" value="<?php echo $row2->provincia?>" required>
+                                <input type="text" name="departamentoG" placeholder="Departamento" id="depart" value="<?php echo $row2->departamento?>" required>
+                            </div>
+                            <div class="entregIzCamposCuart">
+                                <input type="text" name= "distritoG" placeholder="Distrito" id="distrit" value="<?php echo $row2->distrito?>" required>
+                                <input type="text" name= "celularG" placeholder="Celular" id="celul" minlength="9" maxlength="9" value="<?php echo $row2->celular?>" required>                    
+                            </div>
+                        </div>
+
+                    <!-- Tipo de recojo -->
+                    
+                        <!-- <div class="entregIzTipoRec">
+                            <div class="entregIzTipoRecTienda">
+                                <input type="radio" name="tipoRecojo" id="tipoRecojo" value="Recojo" onclick="tipoRecojo()"> 
+                                    <div class="entregIzTipoRecTiendaSub"> 
+                                        <label for="tipoRecojo" class="lbl1">Recojo en tienda</label>
+                                        <label for="tipoRecojo" class="lbl2">recojo en tienda</label>                        
+                                    </div>
+                                </input>
+                            </div>
+                            <div class="entregIzTipoRecDelivery">
+                                <input type="radio" name="tipoRecojo" id="tipoRecojo2" value="Delivery" onclick="tipoDeli()" checked>
+                                <div class="entregIzTipoRecDeliverySub">
+                                    <label for="tipoRecojo2" class="lbl1">Delivery</label>
+                                    <label for="tipoRecojo2" class="lbl2">72 horas</label>   
+                                </div>
+                            </div>
+                        </div> -->
+
+            <?php 
+
+                    }
+        
+                }else{ 
+            
+            
+            
+            ?>
+
+                <!-- Campos a llenar -->
+                <form action="" method="POST">
+                    <div class="entregIzCampos" id="cuandoDelivery">
+                        <div class="entregIzCamposPrim">
+                            <input type="text" name="firstname" placeholder="Nombres" id="firstName" required>
+                            <input type="text" name="firstSurname" placeholder="Apellidos" id="firstSurname" required>
+                        </div>
+                        <input type="text" name="primeraDireccion" placeholder="Dirección 1" id="firstDirection" required>
+                        <input type="text" name="segundaDireccion" placeholder="Dirección 2" id="secondDirection" required>
+                        <div class="entregIzCamposTerc">
+                            <input type="text" name="provinciaG" placeholder="Provincia" id="provinc" required>
+                            <input type="text" name="departamentoG" placeholder="Departamento" id="depart" required>
+                        </div>
+                        <div class="entregIzCamposCuart">
+                            <input type="text" name= "distritoG" placeholder="Distrito" id="distrit" required>
+                            <input type="text" name= "celularG" placeholder="Celular" id="celul" minlength="9" maxlength="9" required>                    
+                        </div>
+                    </div>
 
         <!-- Tipo de recojo -->
         
-            <div class="entregIzTipoRec">
-                <div class="entregIzTipoRecTienda">
-                    <input type="radio" name="tipoRecojo" id="tipoRecojo" value="Recojo" onclick="tipoRecojo()"> 
-                        <div class="entregIzTipoRecTiendaSub"> 
-                            <label for="tipoRecojo" class="lbl1">Recojo en tienda</label>
-                            <label for="tipoRecojo" class="lbl2">recojo en tienda</label>                        
+                    <!-- <div class="entregIzTipoRec">
+                        <div class="entregIzTipoRecTienda">
+                            <input type="radio" name="tipoRecojo" id="tipoRecojo" value="Recojo" onclick="tipoRecojo()"> 
+                                <div class="entregIzTipoRecTiendaSub"> 
+                                    <label for="tipoRecojo" class="lbl1">Recojo en tienda</label>
+                                    <label for="tipoRecojo" class="lbl2">recojo en tienda</label>                        
+                                </div>
+                            </input>
                         </div>
-                    </input>
-                </div>
-                <div class="entregIzTipoRecDelivery">
-                    <input type="radio" name="tipoRecojo" id="tipoRecojo2" value="Delivery" onclick="tipoDeli()" checked>
-                    <div class="entregIzTipoRecDeliverySub">
-                        <label for="tipoRecojo2" class="lbl1">Delivery</label>
-                        <label for="tipoRecojo2" class="lbl2">72 horas</label>   
-                    </div>
-                </div>
-            </div>
+                        <div class="entregIzTipoRecDelivery">
+                            <input type="radio" name="tipoRecojo" id="tipoRecojo2" value="Delivery" onclick="tipoDeli()" checked>
+                            <div class="entregIzTipoRecDeliverySub">
+                                <label for="tipoRecojo2" class="lbl1">Delivery</label>
+                                <label for="tipoRecojo2" class="lbl2">72 horas</label>   
+                            </div>
+                        </div>
+                    </div> -->
+
+            
+            <?php } ?>
+
+            
+            <?php 
+
+            }catch(PDOException $e){
+                echo 'Falló el mostrado de datos de detalle de envío: '.$e->getMessage();
+                die();
+            }finally{
+                $bd = null;
+                $con = null;
+                $dats = null;                
+            }        
+
+            ?>
+
+
             <div class="entregIzBot">
                 <button name="registrarDetallesCompra">Guardar Detalles</button>
 
@@ -268,7 +355,12 @@ if($productos != null){
                                     <p><?php echo MONEDA . number_format($precio2, 2, '.', ','); ?></p>
                                 </div>
                             </div>
-                            <?php } ?>
+                            <?php } 
+                            
+                            $IGV = $total * 0.18;
+                            $totalFinal = $IGV + $total;
+                            
+                            ?>
             
                     
 
@@ -281,19 +373,19 @@ if($productos != null){
         
             
                 <div class="carritoTerc">
-                    <h2>DELILVERY</h2>
-                    <h3>S/<span id="costoDelDelivery2">0.00</span></h3>
+                    <h2>SUBTOTAL: </h2>
+                    <h3>S/. <span id="costoDelDelivery2"><?php echo number_format($total,2) ?></span></h3>
                 </div>
                 <div class="carritoTerc">
                     <h2>IGV</h2>
-                    <h3>S/35.00</h3>
+                    <h3>S/. <?php echo number_format($IGV,2); ?></h3>
                 </div>
                 
             </div>
             
             <div class="carritoDerechaCuart">
                 <h2>TOTAL</h2>
-                <p id="total"><?php echo MONEDA . number_format($total, 2, '.', ','); ?></p>
+                <p id="total"><?php echo MONEDA . number_format($totalFinal, 2, '.', ','); ?></p>
                 <?php } ?>
             </div>
 
@@ -306,7 +398,7 @@ if($productos != null){
 </div>
 
 <!-- PANTALLA DE CARRITO 3 PAGO -->
-<div id="carritoDiv3" class="carritoPagoTotal">
+<div id="carritoDiv3" class="carritoPagoTotal" style="display: none;">
 
     <!-- DIV IZQUIERDO -->
     <div class="carritoPagoIzquierda">
@@ -346,6 +438,24 @@ if($productos != null){
                 </div>
 
             </div>
+
+            <div class="entregIzTipoRec">
+                            <div class="entregIzTipoRecTienda">
+                                <input type="radio" name="tipoRecojo" id="tipoRecojo" value="Recojo" onclick="tipoRecojo()"> 
+                                    <div class="entregIzTipoRecTiendaSub"> 
+                                        <label for="tipoRecojo" class="lbl1">Recojo en tienda</label>
+                                        <label for="tipoRecojo" class="lbl2">recojo en tienda</label>                        
+                                    </div>
+                                </input>
+                            </div>
+                            <div class="entregIzTipoRecDelivery">
+                                <input type="radio" name="tipoRecojo" id="tipoRecojo2" value="Delivery" onclick="tipoDeli()" checked>
+                                <div class="entregIzTipoRecDeliverySub">
+                                    <label for="tipoRecojo2" class="lbl1">Delivery</label>
+                                    <label for="tipoRecojo2" class="lbl2">72 horas</label>   
+                                </div>
+                            </div>
+                        </div>
 
             <!-- DEBITO -->
             <!-- <div class="pagoTarjetaDebito">
@@ -440,17 +550,17 @@ if($productos != null){
         <div class="entregDerPrec">
 
                 <div class="carritoTerc">
-                    <h2>DELILVERY</h2>
-                    <h3>S/<span id="costoDelDelivery3">0.00</span></h3>
-                </div>
-                <div class="carritoTerc">
+                    <h2>SUBTOTAL: </h2>
+                    <h3>S/. <span id="costoDelDelivery3"><?php echo number_format($total, 2); ?></span></h3>
+                </div> 
+                <div class="carritoTerc">                    
                     <h2>IGV</h2>
-                    <h3>S/35.00</h3>
+                    <h3>S/. <?php echo number_format($IGV, 2);?></h3>
                 </div>
             </div>
             <div class="carritoDerechaCuart">
                 <h2>TOTAL</h2>
-                <p id="total"><?php echo MONEDA . number_format($total, 2, '.', ','); ?></p>
+                <p id="total"><?php echo MONEDA . number_format($totalFinal, 2, '.', ','); ?></p>
                 <?php } ?>
             </div>
 
@@ -460,7 +570,5 @@ if($productos != null){
     </div>
 
 </div>
-<!-- database is correct -->
-<!-- CONEXION IS CORRECT -->
 
 <?php require_once("./footer.php"); ?>

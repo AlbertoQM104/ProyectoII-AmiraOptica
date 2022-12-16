@@ -29,7 +29,8 @@ if(isset($_POST['registrarTarjetaT'])){
             $tarjeta -> setCcv($_POST['nroCV']);
             $tarjeta -> setVencimientoMes($_POST['capturaMesT']);
             $tarjeta -> setVencimientoAnio($_POST['capturaAnioT']);
-            $tarjeta -> setId_cliente($_SESSION['idCliente']);            
+            $tarjeta -> setId_cliente($_SESSION['idCliente']);    
+            $tarjeta -> setMetodoDeEnvio($_REQUEST['tipoRecojo']);        
             
             //Guardar en nuevas variables            
             $metodoPago = $tarjeta -> getId_metodoPago();
@@ -39,9 +40,10 @@ if(isset($_POST['registrarTarjetaT'])){
             $mesT = $tarjeta -> getVencimientoMes();
             $anioT = $tarjeta -> getVencimientoAnio();
             $idCliente = $tarjeta -> getId_cliente();
+            $metodoEnvio = $tarjeta -> getMetodoDeEnvio();
 
             /* Método para insertar */
-            $tarjeta -> editarTarjeta($metodoPago, $nom, $nroCredito, $nroCv, $mesT, $anioT, $idCliente, $fechaA, $total);
+            $tarjeta -> editarTarjeta($metodoPago, $nom, $nroCredito, $nroCv, $mesT, $anioT, $idCliente, $fechaA, $totalFinal, $metodoEnvio);
 
 
         }else{ //Si aún no existe            
@@ -56,7 +58,8 @@ if(isset($_POST['registrarTarjetaT'])){
             $tarjeta -> setCcv($_POST['nroCV']);
             $tarjeta -> setVencimientoMes($_POST['capturaMesT']);
             $tarjeta -> setVencimientoAnio($_POST['capturaAnioT']);
-            $tarjeta -> setId_cliente($_SESSION['idCliente']);            
+            $tarjeta -> setId_cliente($_SESSION['idCliente']);     
+            $tarjeta -> setMetodoDeEnvio($_REQUEST['tipoRecojo']);          
             
             //Guardar en nuevas variables            
             $metodoPago = $tarjeta -> getId_metodoPago();
@@ -66,13 +69,14 @@ if(isset($_POST['registrarTarjetaT'])){
             $mesT = $tarjeta -> getVencimientoMes();
             $anioT = $tarjeta -> getVencimientoAnio();
             $idCliente = $tarjeta -> getId_cliente();
+            $metodoEnvio = $tarjeta -> getMetodoDeEnvio();
 
             /* Fecha */
             
 
 
             /* Método para actualizar */
-            $tarjeta -> insertarTarjeta($metodoPago, $nom, $nroCredito, $nroCv, $mesT, $anioT, $idCliente, $fechaA, $total);
+            $tarjeta -> insertarTarjeta($metodoPago, $nom, $nroCredito, $nroCv, $mesT, $anioT, $idCliente, $fechaA, $totalFinal, $metodoEnvio);
             
         }
 

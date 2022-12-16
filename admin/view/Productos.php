@@ -4,6 +4,59 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
                     <p><h1>PRODUCTOS</h1></p> 
+
+
+                    <div class="container-fluid d-flex justify-content-between">
+                        <div class="col-xl-3 col-md-4 mb-4">
+                                <div class="card border-left-danger shadow h-100 py-2">
+                                    <div class="card-body">
+                                        <div class="row no-gutters align-items-center">
+                                            <div class="col mr-2">
+                                                <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
+                                                    PRODUCTOS POCO STOCK</div>
+
+                                                <?php
+                                                
+                                                    $db = new Conexion();
+                                                    $con = $db -> conecta();
+
+                                                    try{
+
+                                                        $query = "SELECT COUNT(*) from producto WHERE stock<10";
+                                                        $mostrar = $con -> prepare($query);
+                                                        $mostrar -> execute();
+                                                        $pocoStock = $mostrar -> fetchColumn();
+
+                                                ?>
+
+                                                <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $pocoStock; ?></div>
+
+                                                <?php
+                                                
+                                                    }catch(PDOException $e){
+                                                        echo 'Falló al mostrar poco stock: '.$e->getMessage();
+                                                        die();
+                                                    }finally{
+                                                        $db = null;
+                                                        $con = null;
+                                                        $mostrar = null;
+                                                        $pocoStock = null;
+                                                    }
+                                                
+                                                ?>
+
+                                            </div>
+                                            <div class="col-auto">
+                                                <i class="fa-solid fa-circle-exclamation fa-2x text-gray-300"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+
+
+
                     <p><h3>Recomendación:</h3></p>
                     <p class="mb-4">Usar la columna "stock_min" y filtrar los ceros y reponer el stock de los Productos
                         que llegan al límite del stock sin reposición.</p>
@@ -29,8 +82,8 @@
                                       Exportar Data
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                      <a class="dropdown-item" href="#">Excel</a>
-                                      <a class="dropdown-item" href="#">PDF</a>
+                                      <a class="dropdown-item" href="/ExcelProductos.php">Excel</a>
+                                      <a class="dropdown-item" href="/ReporteProductos.php">PDF</a>
                                     </div>
                                   </div><br>
 

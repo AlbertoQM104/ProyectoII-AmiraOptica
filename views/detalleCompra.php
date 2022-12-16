@@ -1,4 +1,3 @@
-<!-- Conectividad con el header  -->
 <?php require_once("./header.php"); ?>
 
 <?php 
@@ -50,9 +49,16 @@ if($id == ''){
 
     <!-- Especificación del producto -->
 
-    <?php foreach($resultado as $row){ 
+   
+
+    <?php 
+    
+    $conteo = 1;
+    $subtotalT = 0;
+    
+    foreach($resultado as $row){ 
         
-        $conteo = 1;
+        
         
     ?>
 
@@ -74,7 +80,7 @@ if($id == ''){
         
 
         <div class="detalleCompraOnline1">
-            <h3>Producto N° 000<?php echo $conteo; ?></h3>  
+            <h3>Producto N° 000<?php echo $conteo; $conteo++;?></h3>  
             <!-- <h3>Detalle del pago</h3>   -->        
         </div>
 
@@ -90,8 +96,8 @@ if($id == ''){
                 </div>
                 <div class="compOnliDetails">
                     <h2><?php echo $row->nombre; ?></h2>
-                    <h3>S/. <?php echo $row->precio ?></h3>
-                    <h4>GUCCI</h4>
+                    <h3>S/. <?php echo number_format($row->precio, 2) ?></h3>
+                    <!-- <h4>GUCCI</h4> -->
                     <h5><?php echo $row->cantidad ?> Unidad</h5>
                 </div>
             </div>    
@@ -110,16 +116,28 @@ if($id == ''){
         
 
     </div>   
+
+    
     
     <?php
 
-    $conteo++;
-
-        } 
+        $subtotalT += $row->precio;
 
 
+        } //Fin del FOREACH
+        
+        $IGVTEMPORAL = $subtotalT * 0.18;
+        $totalTempo = $IGVTEMPORAL + $subtotalT;
+        
+        ?>
 
-?>
+    
+
+    <div class="ResumenDetalleCompra">
+        <h2>SUBTOTAL: S/. <?php echo number_format($subtotalT, 2) ?></h2>
+        <h2>IGV: S/. <?php echo number_format($IGVTEMPORAL, 2) ?></h2>
+        <h2>TOTAL: S/. <?php echo number_format($totalTempo, 2) ?></h2>
+    </div>
 
     <!-- Final estado -->
     <!-- <div class="tituloEstadoFinal">
@@ -127,51 +145,114 @@ if($id == ''){
     </div> -->
 
     <?php 
+
+        try{
     
-        $sqlEstado = $con -> prepare("SELECT estado from pedido where pedido.id = ?");
+        $sqlEstado = $con -> prepare("SELECT estado 
+                                      FROM pedido                                      
+                                      WHERE pedido.id = ?");
         $sqlEstado -> execute([$id]);
         $reslutado22 = $sqlEstado->fetchColumn();
+
+        $sqlEnvio = $con -> prepare("SELECT metodoEnvio FROM pedido WHERE pedido.id=?");
+        $sqlEnvio -> execute([$id]);
+        $elMetodoDeEnvio = $sqlEnvio->fetchColumn();
+
+        
+
+        if($elMetodoDeEnvio == "Delivery"){
     
     ?>
 
-    <?php    
-        if($reslutado22 == "RECIBIDO"){   
-    ?>
+                    <?php    
+                        if($reslutado22 == "RECIBIDO"){   
+                    ?>
 
-        <div class="estadoCompraF">
-            <img src="../img/Delivery-1.jpg" alt="">
-        </div>
+                        <div class="estadoCompraF">
+                            <img src="../img/Delivery-1.jpg" alt="">
+                        </div>
 
-    <?php
-    
-        }else if($reslutado22 == "PREPARANDO"){
-    
-    ?>
+                    <?php
+                    
+                        }else if($reslutado22 == "PREPARANDO"){
+                    
+                    ?>
 
-        <div class="estadoCompraF">
-            <img src="../img/Delivery-2.jpg" alt="">
-        </div>
+                        <div class="estadoCompraF">
+                            <img src="../img/Delivery-2.jpg" alt="">
+                        </div>
 
 
-    <?php }else if($reslutado22 == "EN RUTA"){ ?>
+                    <?php }else if($reslutado22 == "EN RUTA"){ ?>
 
-        <div class="estadoCompraF">
-            <img src="../img/Delivery-3.jpg" alt="">
-        </div>
+                        <div class="estadoCompraF">
+                            <img src="../img/Delivery-3.jpg" alt="">
+                        </div>
 
-    <?php }else if($reslutado22 == "ENTREGADO"){ ?>
+                    <?php }else if($reslutado22 == "ENTREGADO"){ ?>
 
-        <div class="estadoCompraF">
-            <img src="../img/Delivery-4.jpg" alt="">
-        </div>
+                        <div class="estadoCompraF">
+                            <img src="../img/Delivery-4.jpg" alt="">
+                        </div>
 
-    <?php }else{ ?>
+                    <?php }else{ ?>
 
-        <div class="estadoCompraF">
-            NO EXISTE COMPRA
-        </div>
+                        <div class="estadoCompraF">
+                            NO EXISTE COMPRA
+                        </div>
 
-    <?php } ?>
+                    <?php } ?>
+
+            <?php }else if($elMetodoDeEnvio == "Recojo"){ ?>
+
+                <?php    
+                        if($reslutado22 == "RECIBIDO"){   
+                    ?>
+
+                        <div class="estadoCompraF">
+                            <img src="../img/Recojo-1.jpg" alt="">
+                        </div>
+
+                    <?php
+                    
+                        }else if($reslutado22 == "PREPARANDO"){
+                    
+                    ?>
+
+                        <div class="estadoCompraF">
+                            <img src="../img/Recojo-2.jpg" alt="">
+                        </div>
+
+
+                    <?php }else if($reslutado22 == "LISTO PARA RECOJO"){ ?>
+
+                        <div class="estadoCompraF">
+                            <img src="../img/Recojo-3.jpg" alt="">
+                        </div>
+
+                    <?php }else if($reslutado22 == "ENTREGADO"){ ?>
+
+                        <div class="estadoCompraF">
+                            <img src="../img/Recojo-4.jpg" alt="">
+                        </div>
+
+                    <?php }else{ ?>
+
+                        <div class="estadoCompraF">
+                            NO EXISTE COMPRA
+                        </div>
+
+                    <?php } ?>
+
+            <?php } 
+            
+                    }catch(PDOException $e){
+                        echo 'Falló al mostrar estado de compra: ' . $e->getMessage();
+                    }finally{
+                        $sqlEstado = null;
+                        $sqlEnvio = null;
+                    }
+                        ?>
 
 
 </div>

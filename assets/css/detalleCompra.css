@@ -64,6 +64,23 @@
     margin-right: 40px;
 }
 
+/* Final subtotales */
+.ResumenDetalleCompra{
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    padding: 25px 15px;
+
+    border: solid 1px #929292;
+    border-radius: 10px;
+}
+
+.ResumenDetalleCompra h2{
+    padding-top: 10px;
+    font-size: 24px;
+    color: #696969;
+}
+
 /* Final estados */
 .tituloEstadoFinal{
     display: flex;

@@ -26,12 +26,13 @@ if($id == '' || $token == ''){
         $sql = $con->prepare("SELECT count(id) FROM producto WHERE id=?");     
         $sql -> execute([$id]);
         if($sql->fetchColumn() > 0){
-            $sql = $con->prepare("SELECT nombre, Descripcion, precio, imagen FROM producto WHERE id=? LIMIT 1");                 
+            $sql = $con->prepare("SELECT nombre, Descripcion, precio, imagen, id_categoria FROM producto WHERE id=? LIMIT 1");                 
             $sql -> execute([$id]);
             $row = $sql -> fetch(PDO::FETCH_ASSOC);
             $nombre = $row['nombre'];
             $descripcion = $row['Descripcion'];
             $precio = $row['precio'];
+            $tipoCategoriaLente = $row['id_categoria'];
 
             $imagen2 = $row['imagen'];
 
@@ -85,8 +86,23 @@ $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
             <!-- <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque itaque cupiditate sunt est vitae maxime ab voluptates quos blanditiis et? Dolorem tempore commodi fuga rem numquam aut, doloribus minima repellendus?</p> -->
             <p><?php echo $descripcion; ?></p>
             <div class="zonaMontBot">
-                <a href="./ingresarGraduacion.php" class="btnMon btnMonturas1">Agregar Lunas</a>
-                <button href="./carritoCompra.php" class="btnMon btnMonturas2">Sólo Monturas</button>
+
+            <?php if($tipoCategoriaLente!=2){ ?>
+
+
+                <a href="./ingresarGraduacion.php" class="btnMon btnMonturas1">Agregar medición de ojos</a>
+
+
+            <?php }?>
+
+                
+
+            
+
+            
+
+
+                <!-- <button href="./carritoCompra.php" class="btnMon btnMonturas2">Sólo Monturas</button> -->
             </div>            
         </div>
         <div class="zonaBotones">
@@ -143,12 +159,12 @@ $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
     <hr class="lineaSimilaresAbajo">
 </div>
 
-<div class="zonaValoracion">
+<!-- <div class="zonaValoracion">
     <h1>Valoración</h1>
-    <div class="zonaValoracionComentarios">
+    <div class="zonaValoracionComentarios"> -->
 
         <?php for($i=0; $i<2; $i++){ ?>
-
+<!-- 
         <div class="comentarioValora">
 
             <div class="comentarioUsuario">
@@ -174,11 +190,11 @@ $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
 
 
 
-        </div>
+        </div> -->
 
-        <?php } ?>
+<!--         <?php } ?>
 
     </div>
-</div>
+</div> -->
 
 <?php require_once("./footer.php"); ?>

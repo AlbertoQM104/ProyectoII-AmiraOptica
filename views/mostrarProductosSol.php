@@ -18,7 +18,7 @@ $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
 <div class="contenedorProductosTotal">
 
 
-    <div class="contenedorFiltros">
+    <!-- <div class="contenedorFiltros">
         <div class="contenedorFiltrosInterno">
             <div class="filtroSuperior">
                 <div class="superiorDatos1">
@@ -50,7 +50,7 @@ $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
                 <label for="rojo"><input type="checkbox" id="rojo" value="rojo">Rojo</label>
             </div>
         </div>
-    </div>
+    </div> -->
 
     <div class="contenedorProductos">
 

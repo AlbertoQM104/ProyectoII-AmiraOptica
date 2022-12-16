@@ -17,7 +17,39 @@
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                                 NUEVOS PEDIDOS</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">430</div>
+
+                                            <?php 
+                                            
+                                                $db = new Conexion;
+                                                $con = $db->conecta();
+
+                                                try{
+                                                $consultaN = "SELECT COUNT(*) FROM pedido WHERE estado='RECIBIDO'";
+                                                $pedidoNuevo = $con -> prepare($consultaN);
+                                                $pedidoNuevo -> execute();
+
+                                                $cantidadNuevo = $pedidoNuevo -> fetchColumn();
+
+                                            ?>
+
+
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $cantidadNuevo; ?></div>
+
+                                            <?php 
+                                                }catch(PDOException $e){
+                                                    echo 'Falló la mostrar cantidad de pedidos nuevos: '.$e->getMessage();
+                                                    die();
+                                                }finally{
+                                                    $db = null;
+                                                    $con = null;
+                                                    $consultaN = null;
+                                                    $pedidoNuevo = null;
+                                                    $cantidadNuevo = null;
+                                                }
+                                            ?>
+
+
+
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -34,7 +66,38 @@
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                                 PEDIDOS PENDIENTES</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">76</div>
+
+
+                                                <?php 
+                                                
+                                                    $db = new Conexion();
+                                                    $con = $db->conecta();
+
+                                                    try{
+                                                    $consultaN = "SELECT COUNT(*) FROM pedido WHERE estado='PREPARANDO' OR estado='EN RUTA' OR estado = 'LISTO PARA RECOJO'";
+                                                    $pedidoPendiente = $con -> prepare($consultaN);
+                                                    $pedidoPendiente -> execute();
+
+                                                    $cantidadPendiente = $pedidoPendiente -> fetchColumn();
+                                                ?>
+
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $cantidadPendiente ?></div>
+
+                                                <?php
+
+                                                    }catch(PDOException $e){
+                                                        echo 'Falló la mostrar cantidad de pedidos nuevos: '.$e->getMessage();
+                                                        die();
+                                                    }finally{
+                                                        $db = null;
+                                                        $con = null;
+                                                        $consultaN = null;
+                                                        $pedidoPendiente = null;
+                                                        $cantidadPendiente = null;
+                                                    }
+                                                
+                                                ?>
+
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -45,7 +108,7 @@
                         </div>
                     
 
-                        <div class="col-xl-3 col-md-4 mb-4">
+                        <!-- <div class="col-xl-3 col-md-4 mb-4">
                             <div class="card border-left-warning shadow h-100 py-2">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-right">
@@ -60,7 +123,11 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
+
+
+
+
                     </div>
                     <!-- <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
                         For more information about DataTables, please visit the <a target="_blank"
@@ -78,8 +145,8 @@
                                       Exportar Data
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                      <a class="dropdown-item" href="#">Excel</a>
-                                      <a class="dropdown-item" href="#">PDF</a>
+                                      <a class="dropdown-item" href="/ExcelPedidos.php">Excel</a>
+                                      <a class="dropdown-item" href="/ReportePedidos.php">PDF</a>
                                     </div>
                                   </div><br>
                         <div class="card-body">
@@ -91,6 +158,7 @@
                                             <th>Fecha</th>
                                             <th>Total</th>
                                             <th>Estado</th>
+                                            <th>Método de Envío</th>
                                             <th>ID_Cliente</th>                                            
                                             <th>Modificar</th>
                                             
@@ -116,6 +184,7 @@
                                             <td><?php echo $result -> fecha ?></td>
                                             <td><?php echo $result -> total ?></td>
                                             <td><?php echo $result -> estado ?></td>
+                                            <td><?php echo $result -> metodoEnvio ?></td>
                                             <td><?php echo $result -> id_Cliente ?></td>                                                                                     
                                             <td>
                                                 <button type="button" class="btn btn-info editabtn" data-toggle="modal" data-target="#editarP">Editar</button>

@@ -29,8 +29,8 @@
                                       Exportar Data
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                      <a class="dropdown-item" href="#">Excel</a>
-                                      <a class="dropdown-item" href="#">PDF</a>
+                                      <a class="dropdown-item" href="/ExcelUsuario.php">Excel</a>
+                                      <a class="dropdown-item" href="/ReporteUsuarios.php">PDF</a>
                                     </div>
                                   </div><br>
 

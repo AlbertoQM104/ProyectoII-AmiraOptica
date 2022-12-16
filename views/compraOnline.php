@@ -1,4 +1,3 @@
-<!-- conexión con el header -->
 <?php require_once("./header.php"); ?>
 
 <?php 
@@ -23,7 +22,6 @@
     <h1>MIS COMPRAS</h1>
 </div>
 
-<!-- contador de la compra online -->
 <div class="conteCompraOnline">
 
 
@@ -40,9 +38,12 @@
     
         try{
     
+            
+            
         foreach($resultado as $row){ 
         
-        $i = 1;
+        
+        
         
         
     ?>
@@ -65,21 +66,22 @@
         
 
         <div class="compOnliNroCompr">
-            <h3>Compra N° 00<?php echo $i; $i++;?></h3>            
+            <h3>ID del Pedido: <?php echo $row->id;?></h3>            
         </div>
 
-        <div class="compOnliLlega">
+        <!-- <div class="compOnliLlega">
             <h3>Llega aproximadamente el 30 de Octubre</h3>
-        </div>        
+        </div>    -->     
 
         <div class="compOnliFilaProd">
             <div class="compOnliProdUni">
                 <div class="compOnliImag">
-                    <img src="../img/lente1.jpg" alt="">
+                    <img src="../img/PedidoCaja.png" alt="">
                 </div>
                 <div class="compOnliDetails">
                     <h2>Estado: <?php echo $row->estado ?></h2>
-                    <h3>Despacho: A domicilio </h3>
+                    <h3>Despacho: <?php echo $row->metodoEnvio; ?> </h3>
+                    <h3>Precio Total: &nbsp; S/. <?php echo number_format($row->total,2); ?></h3>
                     <h4>Entre las 8:00 y 20:00 hrs.</h4>
                 </div>
             </div>
@@ -114,5 +116,4 @@
 
 </div>
 
-<!-- conexión con el footer -->
 <?php require_once("./footer.php"); ?>

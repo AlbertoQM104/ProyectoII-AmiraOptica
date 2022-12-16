@@ -1,7 +1,7 @@
-<?php include("./header.php"); ?>
+<?php include_once("./header.php"); ?>
 
 
-
+<?php require_once("../library/conexion.php"); ?>
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 
@@ -10,7 +10,7 @@
                     
                     <div class="container-fluid d-flex justify-content-between">
 
-                        <div class="col-xl-3 col-md-4 mb-4">
+                        <!-- <div class="col-xl-3 col-md-4 mb-4">
                             <div class="card border-left-primary shadow h-100 py-2">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-left">
@@ -60,7 +60,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                     <!-- <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
                         For more information about DataTables, please visit the <a target="_blank"
@@ -78,8 +78,8 @@
                                       Exportar Data
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                      <a class="dropdown-item" href="#">Excel</a>
-                                      <a class="dropdown-item" href="#">PDF</a>
+                                      <a class="dropdown-item" href="/ExcelDetallePedidos.php">Excel</a>
+                                      <a class="dropdown-item" href="/ReporteDetallePedidos.php">PDF</a>
                                     </div>
                                   </div><br>
                         <div class="card-body">
@@ -87,82 +87,53 @@
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>Nombre producto</th>
-                                            <th>Cantidad</th>
-                                            <th>#Pedido</th>
-                                            <th>Precio</th>
-                                            <th>Fecha</th>
-                                            <th>ID</th>
-                                            <th>Status</th>
+                                            <th>ID_Pedido</th>
+                                            <th>ID_Producto</th>
+                                            <th>Nombre</th>
+                                            <th>Cantidad</th>                                            
                                         </tr>
                                     </thead>
-                                    <tfoot>
+                                    
+                                    <tbody>
+
+                                        <?php 
+                                        
+                                            $db = new Conexion();
+                                            $con = $db -> conecta();
+
+                                            try{
+
+                                            $query = "SELECT * FROM detalle_pedido";
+                                            $tabla = $con -> prepare($query);
+                                            $tabla -> execute();
+                                            $resultado = $tabla -> fetchAll(PDO::FETCH_OBJ);
+
+                                            foreach($resultado as $fila){
+                                        ?>
+
                                         <tr>
-                                            <th>Nombre producto</th>
-                                            <th>Cantidad</th>
-                                            <th>#Pedido</th>
-                                            <th>Precio</th>
-                                            <th>Fecha</th>
-                                            <th>ID</th>
-                                            <th>Status</th>
+                                            <td><?php echo $fila->id_pedido; ?></td>
+                                            <td><?php echo $fila->id_producto; ?></td>
+                                            <td><?php echo $fila->nombre; ?></td>
+                                            <td><?php echo $fila->cantidad; ?></td>
                                             
                                         </tr>
-                                    </tfoot>
-                                    <tbody>
-                                        <tr>
-                                            <td>Lente código 0001</td>
-                                            <td>143</td>
-                                            <td>1233</td>
-                                            <td>S/.199.90</td>
-                                            <td>2022/11/20</td>
-                                            <td>39842</td>
-                                            <td>Cancelado</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Lente código 0001</td>
-                                            <td>143</td>
-                                            <td>1233</td>
-                                            <td>S/.199.90</td>
-                                            <td>2022/11/20</td>
-                                            <td>39842</td>
-                                            <td>Pendiente Pago</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Lente código 0001</td>
-                                            <td>143</td>
-                                            <td>1233</td>
-                                            <td>S/.199.90</td>
-                                            <td>2022/11/20</td>
-                                            <td>39842</td>
-                                            <td>Delivery</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Lente código 0001</td>
-                                            <td>143</td>
-                                            <td>1233</td>
-                                            <td>S/.199.90</td>
-                                            <td>2022/11/20</td>
-                                            <td>39842</td>
-                                            <td>Cancelado</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Lente código 0001</td>
-                                            <td>143</td>
-                                            <td>1233</td>
-                                            <td>S/.199.90</td>
-                                            <td>2022/11/20</td>
-                                            <td>39842</td>
-                                            <td>Delivery</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Lente código 0001</td>
-                                            <td>143</td>
-                                            <td>1233</td>
-                                            <td>S/.199.90</td>
-                                            <td>2022/11/20</td>
-                                            <td>39842</td>
-                                            <td>Cancelado</td>
-                                        </tr>
+                                        
+                                        <?php 
+                                            }
+                                        }catch(PDOException $e){
+                                            echo 'Falló al mostrar detalles de pedidos: '.$e->getMessage();
+                                            die();
+                                        }finally{
+                                            $db = null;
+                                            $con = null;
+                                            $query = null;
+                                            $tabla = null;
+                                            $resultado = null;
+                                        }
+                                        
+                                        
+                                        ?>
 
                                     </tbody>
                                 </table>

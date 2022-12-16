@@ -16,11 +16,11 @@
     </div>
 
     <div class="pie2">
-        <a href="#">Features</a> 
-        <a href="#">About</a>
-        <a href="#">Testimonials</a>
-        <a href="#">Contact</a>
-        <a href="#">Download</a>
+        <a href="#">Componentes</a> 
+        <a href="#">Acerca de</a>
+        <a href="#">Testimonios</a>
+        <a href="#">Contacto</a>
+        <a href="#">Descarga</a>
     </div>
 
     <div class="pie3">

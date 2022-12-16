@@ -1,5 +1,5 @@
 <?php
-// Conexión con la carpeta config
+
     require_once ("../config/config.php");  
 
     Class Conexion{
