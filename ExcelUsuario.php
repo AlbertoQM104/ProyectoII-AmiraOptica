@@ -11,7 +11,7 @@
 <?php
 include('config.php');
 date_default_timezone_set("America/Bogota");
-$fecha = date("d/m/Y");
+$fecha = date("d/m/Y"); /* hellowpordl */
 
 header("Content-Type: text/html;charset=utf-8");
 header("Content-Type: application/vnd.ms-excel charset=iso-8859-1");
